@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 public class LightRayManager : MonoBehaviour
@@ -6,19 +7,81 @@ public class LightRayManager : MonoBehaviour
     public float maxDistance = 100f; 
     public int maxReflections = 5;
     public float raySpeed = 10f; // 光線の進む速度 (単位/秒)
+    public LayerMask playerLayer; // プレイヤーのレイヤー
+    public float lineWidth = 0.1f; // 線の太さ
 
     private LineRenderer lineRenderer;
     private float elapsedTime = 0f; // 経過時間
+    private bool isActive = false; // 発射状態
+    private bool isCompleted = false; // 光線が完全に描画されたか
+    private bool hasReachedGoal = false; // ゴールに到達したか
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        
+        // 線の太さを設定
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
     }
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        DrawLightPath();
+        // プレイヤーをクリック/タップで光線発射
+        HandleInput();
+        
+        if (isActive)
+        {
+            if (!isCompleted)
+            {
+                elapsedTime += Time.deltaTime;
+            }
+            DrawLightPath();
+        }
+    }
+
+    void HandleInput()
+    {
+        var mouse = Mouse.current;
+        var touchscreen = Touchscreen.current;
+
+        bool isPressed = false;
+        Vector2 inputPos = Vector2.zero;
+
+        // マウス入力（エディタ・スタンドアロン）
+        if (mouse != null && mouse.leftButton.wasPressedThisFrame)
+        {
+            isPressed = true;
+            inputPos = mouse.position.ReadValue();
+        }
+        
+        // タッチ入力（モバイル）
+        if (touchscreen != null && touchscreen.touches.Count > 0)
+        {
+            var touch = touchscreen.touches[0];
+            if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+            {
+                isPressed = true;
+                inputPos = touch.position.ReadValue();
+            }
+        }
+
+        if (isPressed)
+        {
+            // タップ位置からレイキャスト
+            Ray ray = Camera.main.ScreenPointToRay(inputPos);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, playerLayer))
+            {
+                // プレイヤーをタップした場合、光線を発射
+                if (hit.transform == transform)
+                {
+                    isActive = true;
+                    elapsedTime = 0f; // リセット
+                    isCompleted = false; // リセット
+                    hasReachedGoal = false; // リセット
+                }
+            }
+        }
     }
 
     void DrawLightPath()
@@ -33,6 +96,8 @@ public class LightRayManager : MonoBehaviour
         // Z座標は0または一定値に固定されることを前提とする (2D的な動きの制約)
 
         var points = new List<Vector3>();
+        var hitGoal = false; // ゴールに到達したか
+        var goalPointIndex = -1; // ゴールの点のインデックス
         points.Add(currentPosition);
 
         // Raycastingの処理
@@ -66,8 +131,8 @@ public class LightRayManager : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Goal")) // 3Dゴールに当たった場合
                 {
-                    points.Add(hit.point); 
-                    Debug.Log("光がゴールに到達しました！");
+                    hitGoal = true;
+                    goalPointIndex = points.Count - 1; // ゴールの点のインデックス（既に追加済み）
                     break;
                 }
                 else
@@ -119,6 +184,19 @@ public class LightRayManager : MonoBehaviour
         if (visiblePointCount > 0)
         {
             lineRenderer.SetPositions(points.GetRange(0, visiblePointCount).ToArray());
+        }
+        
+        // 全ての点が表示されたら完了状態に
+        if (visiblePointCount >= points.Count)
+        {
+            isCompleted = true;
+        }
+        
+        // ゴールの点まで光線が到達した場合のみゴール判定
+        if (hitGoal && visiblePointCount > goalPointIndex && !hasReachedGoal)
+        {
+            Debug.Log("光がゴールに到達しました！");
+            hasReachedGoal = true;
         }
     }
 }
