@@ -33,7 +33,7 @@ public class CylinderScaler : MonoBehaviour
         
         //Cylinderのスケール調整
         Vector3 newScale = transform.localScale;
-        newScale.y = distance * 2;
+        newScale.y = distance * 0.5f;
         transform.localScale = newScale;
         
         //2点の中間点に配置

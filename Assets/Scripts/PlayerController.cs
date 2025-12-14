@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject beamPrefab;     //光線のプレハブ
-    [SerializeField] private Transform firePoint;       //発射位置
+    [SerializeField] private FireLaser fireLaser;       //FireLaserコンポーネント
     private Camera mainCamera;                          //メインカメラ
     
     void Start()
@@ -37,16 +36,11 @@ public class PlayerController : MonoBehaviour
             //クリックしたオブジェクトがプレイヤーかチェック
             if (hit.collider.gameObject == gameObject)
             {
-                FireBeam();
+                if (fireLaser != null)
+                {
+                    fireLaser.Fire();
+                }
             }
         }
-    }
-    
-    void FireBeam()
-    {
-        if (beamPrefab == null || firePoint == null) return;
-        
-        //ビームを生成
-        GameObject beam = Instantiate(beamPrefab, firePoint.position, firePoint.rotation);
     }
 }

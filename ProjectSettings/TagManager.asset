@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Goal
-  - Reflector
+  - Pointer
   layers:
   - Default
   - TransparentFX
@@ -18,9 +18,9 @@ TagManager:
   - 
   - 
   - 
-  - Player
-  - Reflector
   - Bloom
+  - 
+  - 
   - 
   - 
   - 
