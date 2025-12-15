@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private FireLaser fireLaser;       //FireLaserコンポーネント
+    [SerializeField] private LaserColorType laserColor = LaserColorType.Red;
     private Camera mainCamera;                          //メインカメラ
     
     void Start()
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //左クリックで判定（New Input System）
+        //左クリックまたはタップを判定する
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             CheckClickOnPlayer();
@@ -25,12 +26,12 @@ public class PlayerController : MonoBehaviour
     {
         if (mainCamera == null) return;
         
-        //マウス位置からRayを飛ばす（New Input System）
+        //マウス位置からRayを飛ばす
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(mousePosition);
         RaycastHit hit;
         
-        //Raycastで当たり判定（isTriggerにも反応）
+        //Raycastで当たり判定
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Collide))
         {
             //クリックしたオブジェクトがプレイヤーかチェック
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (fireLaser != null)
                 {
+                    //発射
+                    fireLaser.SetColor(laserColor);
                     fireLaser.Fire();
                 }
             }

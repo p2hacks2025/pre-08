@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7723503614124612921}
   - component: {fileID: 1142372878195542394}
   - component: {fileID: 1545112724181941844}
+  - component: {fileID: -877848108808414648}
   - component: {fileID: 5583672713635400051}
   m_Layer: 0
   m_Name: DirectionChanger
@@ -93,6 +94,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &-877848108808414648
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163146364252955897}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5583672713635400051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +290,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 4042609129476870301, guid: 8e0953fba96774e6093d929fba832421, type: 3}
   firePoint: {fileID: 8077761410347676137}
   isActive: 0
+  laserColorType: 0
 --- !u!1 &5366077081363499602
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +393,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 4042609129476870301, guid: 8e0953fba96774e6093d929fba832421, type: 3}
   firePoint: {fileID: 8729309496907569348}
   isActive: 0
+  laserColorType: 0
 --- !u!1 &8595000298604398085
 GameObject:
   m_ObjectHideFlags: 0
