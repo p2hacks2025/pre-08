@@ -579,28 +579,6 @@ Transform:
   - {fileID: 1144597431}
   m_Father: {fileID: 1299691799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &199516854 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1163146364252955897, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-  m_PrefabInstance: {fileID: 1859094263}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &199516860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199516854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf2ceb1b03b34172815065f4915b6f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorChanger
-  snapDistance: 1.5
-  laserA: {fileID: 1945725714}
-  laserB: {fileID: 742145838}
-  colorA: 3
-  colorB: 0
 --- !u!1 &280939694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,17 +1651,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710979940}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &742145838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1516265656496751093, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-  m_PrefabInstance: {fileID: 1859094263}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a78c4f24a464e6d908a83ef790c4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireLaser
 --- !u!1 &788621391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,9 +1975,9 @@ Canvas:
   m_GameObject: {fileID: 903419717}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 330585545}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2057,6 +2024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   objectPanel: {fileID: 1712014051}
   openButton: {fileID: 1414572840}
+  slideSpeed: 500
 --- !u!1 &912874844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2109,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 903419722}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: ToggleObjectPanel
+        m_MethodName: SlideOutPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2272,46 +2240,6 @@ PrefabInstance:
     - target: {fileID: 1163146364252955897, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
       propertyPath: m_Name
       value: DirectionChanger
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516265656496751093, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516265656496751093, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColorType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728556653891897908, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728556653891897908, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColorType
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2926,7 +2854,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 903419722}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: ToggleObjectPanel
+        m_MethodName: SlideInPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2973,6 +2901,97 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414572840}
+  m_CullTransparentMesh: 1
+--- !u!1 &1448587765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448587766}
+  - component: {fileID: 1448587769}
+  - component: {fileID: 1448587768}
+  - component: {fileID: 1448587767}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1448587766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448587765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1712014052}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -200, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1448587767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448587765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607728ce1a24d43e088cc0bf84d0958c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectGeneratorUI
+  objectPrefab: {fileID: 1163146364252955897, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
+  UI: {fileID: 0}
+  spawnDepth: 9
+--- !u!114 &1448587768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448587765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ef39cc11b5b594dcca854d5c69b7891a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1448587769
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448587765}
   m_CullTransparentMesh: 1
 --- !u!1 &1461270370
 GameObject:
@@ -3559,7 +3578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1712014052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3572,6 +3591,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1448587766}
   - {fileID: 912874845}
   - {fileID: 2139728919}
   m_Father: {fileID: 903419721}
@@ -4031,118 +4051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a4972868434488a3fd721f1fd4c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnapSlot
---- !u!1001 &1859094263
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1163146364252955897, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_Name
-      value: ColorChanger
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1442529424794381116, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516265656496751093, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1516265656496751093, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColorType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5110398333601466970, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728556653891897908, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728556653891897908, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: laserColorType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7723503614124612921, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5583672713635400051, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1163146364252955897, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 199516860}
-  m_SourcePrefab: {fileID: 100100000, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
---- !u!114 &1945725714 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5728556653891897908, guid: 7d55c80de5b9e462a886ae89a15126ea, type: 3}
-  m_PrefabInstance: {fileID: 1859094263}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a78c4f24a464e6d908a83ef790c4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireLaser
 --- !u!1 &2002219897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,6 +4405,63 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1000694778988604661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643139651990540134, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639569437933894632, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
+      propertyPath: m_Name
+      value: ColorChanger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07461a947cf72440baf7e2bc0288fbdf, type: 3}
 --- !u!4 &1562966856592997349
 Transform:
   m_ObjectHideFlags: 0
@@ -6183,8 +6148,8 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 1027522448}
   - {fileID: 1299691799}
+  - {fileID: 903419721}
   - {fileID: 1463013108}
   - {fileID: 280939695}
   - {fileID: 1038548194}
-  - {fileID: 1859094263}
-  - {fileID: 903419721}
+  - {fileID: 1000694778988604661}
