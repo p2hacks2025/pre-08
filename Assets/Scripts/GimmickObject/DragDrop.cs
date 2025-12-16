@@ -9,7 +9,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private float fixedY;               //初期y座標
     private Vector3 originalPosition;   //初期座標
     private SnapSlot currentSlot;       //スロット情報
-    private bool isPlaced = false;      //配置済みフラグ
+    [SerializeField] private bool isPlaced = false;      //配置済みフラグ
     
     [SerializeField] private float snapDistance = 1.5f;  //スナップ範囲
     
