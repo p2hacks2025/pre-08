@@ -6,14 +6,8 @@ public class ColorChanger : DragDrop
     [SerializeField] private FireLaser laserB;
     [SerializeField] private LaserColorType colorA = LaserColorType.Red;
     [SerializeField] private LaserColorType colorB = LaserColorType.Blue;
-    
     private bool isActive = false;
     
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     private void Update()
     {
         if (isActive || laserA == null || laserB == null) return;

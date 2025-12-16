@@ -6,11 +6,6 @@ public class DirectionChanger : DragDrop
     [SerializeField] private FireLaser laserB;
     private bool isActive = false;
     
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     private void Update()
     {
         if (isActive || laserA == null || laserB == null) return;

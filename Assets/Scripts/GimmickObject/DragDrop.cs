@@ -5,22 +5,30 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 {
     private Vector3 offset;
     private Camera mainCamera;
-    private float fixedY; //Y軸を固定するための変数
-    private Vector3 originalPosition; //ドラッグ開始時の位置を保存
+    private float fixedY;               //初期y座標
+    private Vector3 originalPosition;   //初期座標
+    private SnapSlot currentSlot;       //スロット情報
     
     [SerializeField]
-    private float snapDistance = 1.5f; //スナップする距離の閾値
+    private float snapDistance = 1.5f;  //スナップ範囲
     
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         mainCamera = Camera.main;
-        fixedY = transform.position.y; //初期y座標
+        fixedY = transform.position.y;  //初期y座標
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         //ドラッグ開始時の位置を保存
         originalPosition = transform.position;
+        
+        //現在のスロットを解放
+        if (currentSlot != null)
+        {
+            currentSlot.Release(gameObject);
+            currentSlot = null;
+        }
         
         //スクリーン座標を変換
         Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, mainCamera.WorldToScreenPoint(transform.position).z);
@@ -43,19 +51,26 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void OnPointerUp(PointerEventData eventData)
     {
         //"SnapPos"タグのオブジェクトを全て検索
-        GameObject[] slots = GameObject.FindGameObjectsWithTag("SnapPos");
+        GameObject[] slotObjects = GameObject.FindGameObjectsWithTag("SnapPos");
         
-        GameObject nearestSlot = null;
+        GameObject nearestSlotObject = null;
+        SnapSlot nearestSlot = null;
         float nearestDistance = float.MaxValue;
         
-        //最も近いスロットを探す
-        foreach (GameObject slot in slots)
+        //最も近い空いているスロットを探す
+        foreach (GameObject slotObj in slotObjects)
         {
-            float distance = Vector3.Distance(transform.position, slot.transform.position);
+            SnapSlot slot = slotObj.GetComponent<SnapSlot>();
+            
+            //SnapSlotコンポーネントがない、または既に占有されている場合はスキップ
+            if (slot == null || !slot.CheckAvailable()) continue;
+            
+            float distance = Vector3.Distance(transform.position, slotObj.transform.position);
             
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
+                nearestSlotObject = slotObj;
                 nearestSlot = slot;
             }
         }
@@ -63,7 +78,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         //スナップ距離以内に有効なスロットがある場合は吸着
         if (nearestSlot != null && nearestDistance <= snapDistance)
         {
-            transform.position = nearestSlot.transform.position;
+            transform.position = nearestSlotObject.transform.position;
+            nearestSlot.Snap(gameObject);
+            currentSlot = nearestSlot;
         }
         else
         {

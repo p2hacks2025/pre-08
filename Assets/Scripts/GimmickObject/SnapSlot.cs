@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class SnapSlot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private GameObject snapObject; //このスロットを占有しているオブジェクト
+    
+    public bool CheckAvailable()
     {
-        
+        return snapObject == null;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Snap(GameObject obj)
     {
-        
+        snapObject = obj;
+    }
+    public void Release(GameObject obj)
+    {
+        if (snapObject == obj)
+        {
+            snapObject = null;
+        }
+    }
+    public bool CheckOccupiedBy(GameObject obj)
+    {
+        return snapObject == obj;
     }
 }
