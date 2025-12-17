@@ -1,55 +1,31 @@
 using UnityEngine;
 
-//色条件の設定
-[System.Serializable]
-public class ColorCondition
+public class ColorChanger : ResponseLaser
 {
-    public FireLaser laser;             //レーザー
-    public LaserColorType colorType;    //色
-}
-
-public class ColorChanger : DragDrop
-{
-    [SerializeField] private ColorCondition conditionA;  //条件A
-    [SerializeField] private ColorCondition conditionB;  //条件B
-    private bool isActive = false;                       //起動フラグ
-    
-    private void Update()
+    protected override void OutputLaser()
     {
-        if (isActive || conditionA.laser == null || conditionB.laser == null) return;
+        //条件が2つ以外のときは処理しない
+        if (conditions == null || conditions.Length != 2) return;
         
-        //Aがアクティブな場合、Bから出力
-        if (conditionA.laser.isActive)
+        //どちらのレーザーがアクティブか判定して、反対側から出力
+        for (int i = 0; i < conditions.Length; i++)
         {
-            //色が一致すればBから出力
-            if (conditionA.laser.laserColor == conditionA.colorType)
+            if (conditions[i].laser != null && conditions[i].laser.isActive)
             {
-                conditionB.laser.SetColor(conditionB.colorType);
-                conditionB.laser.Fire();
-                isActive = true;
-            }
-            else
-            {
-                //条件不一致
-                Debug.LogWarning($"ColorChanger: 条件Aの色が不一致 (入力: {conditionA.laser.laserColor}, 必要: {conditionA.colorType})");
-                isActive = true;
-            }
-        }
-        //Bがアクティブな場合、Aから出力
-        else if (conditionB.laser.isActive)
-        {
-            //色が一致すればAから出力
-            if (conditionB.laser.laserColor == conditionB.colorType)
-            {
-                conditionA.laser.SetColor(conditionA.colorType);
-                conditionA.laser.Fire();
-                isActive = true;
-            }
-            else
-            {
-                //条件不一致
-                Debug.LogWarning($"ColorChanger: 条件Bの色が不一致 (入力: {conditionB.laser.laserColor}, 必要: {conditionB.colorType})");
-                isActive = true;
+                //反対側のレーザーを取得
+                int oppositeIndex = (i + 1) % conditions.Length;
+                var outputLaser = conditions[oppositeIndex].laser;
+                
+                if (outputLaser != null)
+                {
+                    //White指定なら入力色、それ以外は設定色で出力
+                    LaserColorType outputColor = conditions[oppositeIndex].color == LaserColorType.White ? conditions[i].laser.laserColor : conditions[oppositeIndex].color;
+                    
+                    //出力レーザーの色で出力
+                    outputLaser.SetColor(outputColor);
+                    outputLaser.Fire();
+                    return;
+                }
             }
         }
     }

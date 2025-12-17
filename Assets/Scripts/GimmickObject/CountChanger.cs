@@ -1,12 +1,5 @@
 using UnityEngine;
 
-//入力条件の設定
-[System.Serializable]
-public class InputCondition
-{
-    public FireLaser inputLaser;         //入力レーザー
-    public LaserColorType requiredColor; //必要な色
-}
 //出力条件の設定
 [System.Serializable]
 public class OutputCondition
@@ -15,58 +8,36 @@ public class OutputCondition
     public LaserColorType outputColor;  //出力する色
 }
 
-public class CountChanger : DragDrop
+public class CountChanger : ResponseLaser
 {
-    [SerializeField] private InputCondition[] inputConditions;      //入力条件
     [SerializeField] private OutputCondition[] outputConditions;    //出力条件
-    private int requiredInputCount = 0;                             //必要な入力数
-    private bool isActive = false;                                  //起動フラグ
     
-    private void Update()
+    protected override void OutputLaser()
     {
-        if (isActive || inputConditions == null || outputConditions == null) return;
-
-        //必要な入力数が条件数と異なる場合は更新
-        if  (requiredInputCount != inputConditions.Length) requiredInputCount = inputConditions.Length;
+        if (outputConditions == null) return;
         
-        //条件を満たす入力レーザーをカウント
-        int validInputCount = 0;
-        
-        foreach (var condition in inputConditions)
+        //入力された色を取得(White用)
+        LaserColorType inputColor = LaserColorType.White;
+        foreach (var con in conditions)
         {
-            if (condition.inputLaser == null) continue;
-            
-            //レーザーがアクティブな場合
-            if (condition.inputLaser.isActive)
+            if (con.laser != null && con.isDetected && con.laser.isActive)
             {
-                //色条件を満たすかチェック
-                if (condition.inputLaser.laserColor == condition.requiredColor)
-                {
-                    validInputCount++;
-                }
-                else
-                {
-                    //条件不一致
-                    Debug.LogWarning($"CountChanger: 入力色が条件不一致 (入力: {condition.inputLaser.laserColor}, 必要: {condition.requiredColor})");
-                    isActive = true;
-                }
+                inputColor = con.laser.laserColor;
+                break;
             }
         }
         
-        //必要な入力数に達したら出力
-        if (validInputCount >= requiredInputCount)
+        //各出力レーザーを指定した色で発射
+        foreach (var condition in outputConditions)
         {
-            //各出力レーザーを指定した色で発射
-            foreach (var condition in outputConditions)
+            if (condition.outputLaser != null)
             {
-                if (condition.outputLaser != null)
-                {
-                    condition.outputLaser.SetColor(condition.outputColor);
-                    condition.outputLaser.Fire();
-                }
+                //White指定の場合は入力色を使用、それ以外は設定色を使用
+                LaserColorType outputColor = condition.outputColor == LaserColorType.White ? inputColor : condition.outputColor;
+                
+                condition.outputLaser.SetColor(outputColor);
+                condition.outputLaser.Fire();
             }
-            
-            isActive = true;
         }
     }
 }

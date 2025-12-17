@@ -9,7 +9,8 @@ public enum LaserColorType
     Green,
     Skyblue,
     Blue,
-    Purple
+    Purple,
+    White
 }
 
 // 色とマテリアルの管理クラス

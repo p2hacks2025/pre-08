@@ -11,7 +11,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private SnapSlot currentSlot;       //スロット情報
     [SerializeField] private bool isPlaced = false;      //配置済みフラグ
     
-    [SerializeField] private float snapDistance = 1.5f;  //スナップ範囲
+    [SerializeField] private float snapDistance = 1.0f;  //スナップ範囲
     
     //スナップ結果を通知するコールバック
     public Action<bool> OnSnapResult;

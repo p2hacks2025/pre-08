@@ -1,28 +1,29 @@
 using UnityEngine;
 
-public class DirectionChanger : DragDrop
+public class DirectionChanger : ResponseLaser
 {
-    [SerializeField] private FireLaser laserA;  //レーザーA
-    [SerializeField] private FireLaser laserB;  //レーザーB
-    private bool isActive = false;              //起動フラグ
-    
-    private void Update()
+    protected override void OutputLaser()
     {
-        if (isActive || laserA == null || laserB == null) return;
+        //条件が2つ以外のときは処理しない
+        if (conditions == null || conditions.Length != 2) return;
         
-        //Aがアクティブの場合、Bへ色を引き継いで発射
-        if (laserA.isActive)
+        //どちらのレーザーがアクティブか判定して、反対側から出力
+        for (int i = 0; i < conditions.Length; i++)
         {
-            laserB.SetColor(laserA.laserColor);
-            laserB.Fire();
-            isActive = true;
-        }
-        //Bがアクティブの場合、Aへ色を引き継いで発射
-        else if (laserB.isActive)
-        {
-            laserA.SetColor(laserB.laserColor);
-            laserA.Fire();
-            isActive = true;
+            if (conditions[i].laser != null && conditions[i].laser.isActive)
+            {
+                //反対側のレーザーを取得
+                int oppositeIndex = (i + 1) % conditions.Length;
+                var outputLaser = conditions[oppositeIndex].laser;
+                
+                if (outputLaser != null)
+                {
+                    //入力レーザーの色で出力
+                    outputLaser.SetColor(conditions[i].laser.laserColor);
+                    outputLaser.Fire();
+                    return;
+                }
+            }
         }
     }
 }
