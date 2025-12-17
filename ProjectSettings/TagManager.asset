@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Goal
-  - Reflector
+  - Pointer
+  - SnapPos
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Bloom
   - 
   - 
   - 
