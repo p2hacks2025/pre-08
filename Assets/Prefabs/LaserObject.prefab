@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 3599658520496590891}
   - component: {fileID: 1404949722024790176}
   - component: {fileID: 8007606506202445107}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
