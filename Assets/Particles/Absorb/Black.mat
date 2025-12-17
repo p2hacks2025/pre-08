@@ -27,8 +27,10 @@ Material:
   m_ValidKeywords:
   - _ALPHA_TRANSITION_MAP_MODE_2D
   - _BASE_MAP_MODE_2D
-  - _EMISSION_COLOR_COLOR
+  - _EMISSION_AREA_ALL
+  - _EMISSION_COLOR_BASECOLOR
   - _EMISSION_MAP_MODE_2D
+  - _FADE_TRANSITION_ENABLED
   - _PARALLAX_MAP_MODE_2D
   - _TINT_COLOR_ENABLED
   m_InvalidKeywords: []
@@ -45,7 +47,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlphaTransitionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8ec166dbd7864e5448f7b2d6d35725cc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTransitionMap2DArray:
@@ -69,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: eb6637c54d4660447aeb1c5146a7d2f3, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap2DArray:
@@ -169,8 +171,8 @@ Material:
     - _AlphaTransitionMapSecondTextureRowCount: 1
     - _AlphaTransitionMapSecondTextureSliceCount: 4
     - _AlphaTransitionMapSliceCount: 4
-    - _AlphaTransitionMode: 0
-    - _AlphaTransitionProgress: 0
+    - _AlphaTransitionMode: 1
+    - _AlphaTransitionProgress: 0.5
     - _AlphaTransitionProgressCoord: 0
     - _AlphaTransitionProgressCoordSecondTexture: 0
     - _AlphaTransitionProgressSecondTexture: 0
@@ -211,8 +213,8 @@ Material:
     - _DepthFadeWidth: 1
     - _DissolveSharpness: 0.5
     - _DissolveSharpnessSecondTexture: 0.5
-    - _EmissionAreaType: 0
-    - _EmissionColorType: 0
+    - _EmissionAreaType: 1
+    - _EmissionColorType: 1
     - _EmissionIntensity: 1
     - _EmissionIntensityCoord: 0
     - _EmissionMapChannelsX: 0
