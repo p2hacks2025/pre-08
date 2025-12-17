@@ -1,34 +1,54 @@
 using UnityEngine;
 
+//色条件の設定
+[System.Serializable]
+public class ColorCondition
+{
+    public FireLaser laser;             //レーザー
+    public LaserColorType colorType;    //色
+}
+
 public class ColorChanger : DragDrop
 {
-    [SerializeField] private FireLaser laserA;
-    [SerializeField] private FireLaser laserB;
-    [SerializeField] private LaserColorType colorA = LaserColorType.Red;
-    [SerializeField] private LaserColorType colorB = LaserColorType.Blue;
-    private bool isActive = false;
+    [SerializeField] private ColorCondition conditionA;  //条件A
+    [SerializeField] private ColorCondition conditionB;  //条件B
+    private bool isActive = false;                       //起動フラグ
     
     private void Update()
     {
-        if (isActive || laserA == null || laserB == null) return;
+        if (isActive || conditionA.laser == null || conditionB.laser == null) return;
         
-        if (laserA.isActive)
+        //Aがアクティブな場合、Bから出力
+        if (conditionA.laser.isActive)
         {
-            //Aの色が一致した場合はBの色に変換
-            if (laserA.laserColor == colorA)
+            //色が一致すればBから出力
+            if (conditionA.laser.laserColor == conditionA.colorType)
             {
-                laserB.SetColor(colorB);
-                laserB.Fire();
+                conditionB.laser.SetColor(conditionB.colorType);
+                conditionB.laser.Fire();
+                isActive = true;
+            }
+            else
+            {
+                //条件不一致
+                Debug.LogWarning($"ColorChanger: 条件Aの色が不一致 (入力: {conditionA.laser.laserColor}, 必要: {conditionA.colorType})");
                 isActive = true;
             }
         }
-        else if (laserB.isActive)
+        //Bがアクティブな場合、Aから出力
+        else if (conditionB.laser.isActive)
         {
-            //Bの色が一致した場合はAの色に変換
-            if (laserB.laserColor == colorB)
+            //色が一致すればAから出力
+            if (conditionB.laser.laserColor == conditionB.colorType)
             {
-                laserA.SetColor(colorA);
-                laserA.Fire();
+                conditionA.laser.SetColor(conditionA.colorType);
+                conditionA.laser.Fire();
+                isActive = true;
+            }
+            else
+            {
+                //条件不一致
+                Debug.LogWarning($"ColorChanger: 条件Bの色が不一致 (入力: {conditionB.laser.laserColor}, 必要: {conditionB.colorType})");
                 isActive = true;
             }
         }
