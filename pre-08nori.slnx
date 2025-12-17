@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Nova.Editor.csproj" />
+  <Project Path="Nova.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>

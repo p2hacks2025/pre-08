@@ -359,9 +359,8 @@ Material:
     - _Color: {r: 2, g: 2, b: 2, a: 1}
     - _EmissionColor: {r: 0.0066922167, g: 0.0024117234, b: 0.0038020217, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TintColor: {r: 0.45992628, g: 0.043837637, b: 0.4943396, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &3045636554359092680
 MonoBehaviour:
   m_ObjectHideFlags: 11
