@@ -39,17 +39,16 @@ public class LaserPointer : MonoBehaviour
 
             //レーザーを停止する
             rb.linearVelocity = Vector3.zero;
+
+            //衝突位置にパーティクルを生成
+            if (hitParticlePrefab != null)
+            {
+                Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
+            }
             
             //衝突検知
             if (other.gameObject.CompareTag("Goal"))
             {
-                //衝突位置にパーティクルを生成
-                if (hitParticlePrefab != null)
-                {
-                    Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
-                    Instantiate(LaserColor.Instance.GetCollisionParticle(laserColor), transform.position, Quaternion.identity);
-                }
-
                 //GoalManagerに色情報を伝える
                 GoalManager goalManager = other.gameObject.GetComponent<GoalManager>();
                 if (goalManager != null)
@@ -59,13 +58,6 @@ public class LaserPointer : MonoBehaviour
             }
             else if (other.gameObject.CompareTag("Pointer"))
             {
-                //衝突位置にパーティクルを生成
-                if (hitParticlePrefab != null)
-                {
-                    Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
-                    Instantiate(LaserColor.Instance.GetCollisionParticle(laserColor), other.gameObject.transform.position, Quaternion.identity);
-                }
-
                 //FireLaserに色情報を伝える
                 FireLaser fireLaser = other.gameObject.transform.GetComponent<FireLaser>();
                 if (fireLaser != null)

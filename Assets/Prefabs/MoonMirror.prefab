@@ -497,7 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 837269733011952390}
   - component: {fileID: 8324513018001987845}
-  - component: {fileID: 7592262069138344238}
+  - component: {fileID: 4202075776878268187}
   m_Layer: 5
   m_Name: MoonMirror
   m_TagString: Untagged
@@ -545,7 +545,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7592262069138344238
+--- !u!114 &4202075776878268187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -554,16 +554,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7843235581915502446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b549d200094d8e8df423b3c621d26, type: 3}
+  m_Script: {fileID: 11500000, guid: 03b85738e281a4266a58bf6bec19f8cd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DirectionChanger
+  m_EditorClassIdentifier: Assembly-CSharp::MoonMirror
   snapDistance: 1
   conditions:
-  - laser: {fileID: 4698896322700318482}
-    color: 7
+  - color: 7
+    laser: {fileID: 4698896322700318482}
     isDetected: 0
-  - laser: {fileID: 3881361916896925730}
-    color: 7
+  - color: 7
+    laser: {fileID: 3881361916896925730}
     isDetected: 0
   requiredCount: 1
 --- !u!1 &8084980843411942178

@@ -19,6 +19,7 @@ public class LaserColorData
 {
     public LaserColorType colorType;
     public Material material;
+    public Material materialColor;
     public GameObject collisionParticle;
 }
 

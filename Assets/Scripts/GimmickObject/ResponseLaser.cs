@@ -4,8 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class LaserCondition
 {
-    public FireLaser laser;         //レーザー
     public LaserColorType color;    //色
+    public FireLaser laser;         //レーザー
     [HideInInspector] public bool isDetected = false; //検知フラグ
 }
 public class ResponseLaser : DragDrop
@@ -52,7 +52,7 @@ public class ResponseLaser : DragDrop
     
     protected virtual void OutputLaser()
     {
-        Debug.Log($"{gameObject.name}: 全ての条件が満たされました");
+        Debug.Log($"{gameObject.name}: 条件が満たされました");
     }
     
     protected bool CheckConditions(int target)
