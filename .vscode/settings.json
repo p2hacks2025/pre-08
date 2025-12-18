@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "pre-08.slnx"
+    "dotnet.defaultSolution": "pre-08nori.slnx"
 }
