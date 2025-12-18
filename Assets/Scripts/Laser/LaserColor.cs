@@ -19,6 +19,7 @@ public class LaserColorData
 {
     public LaserColorType colorType;
     public Material material;
+    public GameObject collisionParticle;
 }
 
 public class LaserColor : MonoBehaviour
@@ -52,5 +53,16 @@ public class LaserColor : MonoBehaviour
         }
         return null;
     }
-
+    public GameObject GetCollisionParticle(LaserColorType colorType)
+    {
+        //ColorTypeから衝突パーティクルを取得する
+        foreach (var data in colorDataArray)
+        {
+            if (data.colorType == colorType)
+            {
+                return data.collisionParticle;
+            }
+        }
+        return null;
+    }
 }
