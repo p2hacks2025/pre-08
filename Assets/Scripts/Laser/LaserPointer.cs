@@ -3,8 +3,9 @@ using UnityEngine;
 public class LaserPointer : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private float speed = 5f;          //速度
-    [SerializeField] private Renderer laserRenderer;    //Renderer
+    [SerializeField] private float speed = 5f;                  //速度
+    [SerializeField] private Renderer laserRenderer;            //Renderer
+    [SerializeField] private GameObject hitParticlePrefab;      //衝突時のパーティクル
     [HideInInspector] public LaserColorType laserColor = LaserColorType.Red;    //レーザーの色
 
     private void Start()
@@ -29,6 +30,13 @@ public class LaserPointer : MonoBehaviour
         {
             //レーザーを停止する
             rb.linearVelocity = Vector3.zero;
+            
+            //衝突位置にパーティクルを生成
+            if (hitParticlePrefab != null)
+            {
+                Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
+            }
+            
             //衝突検知
             if (other.gameObject.CompareTag("Goal"))
             {
@@ -50,6 +58,5 @@ public class LaserPointer : MonoBehaviour
                 }
             }
         }
-        //必要に応じてエフェクトやサウンドを再生
     }
 }

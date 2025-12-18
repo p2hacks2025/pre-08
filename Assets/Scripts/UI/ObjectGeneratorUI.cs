@@ -1,98 +1,73 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System.Collections;
 
 public class ObjectGeneratorUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private GameObject objectPrefab;   //オブジェクトプレハブ
-    [SerializeField] private UIController UI;
-    
-    [SerializeField] private float spawnDepth = 10.0f;  //カメラからの距離
-    
-    private GameObject spawnedObject;   //生成オブジェクト
-    private DragDrop dragDropComponent; //生成オブジェクトのDragDropコンポーネント
-    private Image image;                //UIアイコン
+    [SerializeField] private Transform objectPlace; //移動対象のオブジェクトの初期位置
+    private GameObject targetObject;                //移動対象のオブジェクト
+    [SerializeField] private Transform field;       //配置フィールド
+    [SerializeField] private UIController UI;       //UIコントローラー
+    private DragDrop dragDropComponent;             //DragDropコンポーネント
+    private RawImage rawImage;                      //UIアイコン
     
     private void Start()
     {
         //コンポーネントの取得
-        image = GetComponent<Image>();
+        rawImage = GetComponent<RawImage>();
+        targetObject = objectPlace.GetChild(0).gameObject;
+        dragDropComponent = targetObject.GetComponent<DragDrop>();
     }
     
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (objectPrefab == null)
-        {
-            Debug.LogWarning("objectPrefabが設定されていません");
-            return;
-        }
-        
-        //UIアイコンを非表示にする
-        if (image != null)
-        {
-            image.enabled = false;
-        }
-        
+        //UIアイコンを非表示
+        rawImage.enabled = false;
         //パネルをスライドアウト
-        if (UI != null)
-        {
-            UI.SlideOutPanel();
-        }
+        UI.SlideOutPanel();
         
-        //スクリーン座標をワールド座標に変換
-        Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, spawnDepth);
+        //マウス位置をワールド座標に変換してオブジェクトを配置
+        Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, Camera.main.WorldToScreenPoint(targetObject.transform.position).z);
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        //指定位置にオブジェクトを生成
-        spawnedObject = Instantiate(objectPrefab, worldPos, Quaternion.identity);
+        worldPos.y = 1f;
+        targetObject.transform.position = worldPos;
         
-        //DragDropコンポーネントを取得
-        dragDropComponent = spawnedObject.GetComponent<DragDrop>();
-        if (dragDropComponent != null)
+        //固定Y座標を更新してからDragDropを初期化
+        dragDropComponent.UpdateFixedY(1f);
+        dragDropComponent.OnPointerDown(eventData);
+        
+        //offsetをゼロに設定してマウス位置に正確に配置
+        dragDropComponent.SetOffset(Vector3.zero);
+        dragDropComponent.OnDrag(eventData);
+        
+        //スナップ結果のコールバックを登録
+        dragDropComponent.OnSnapResult = (success) =>
         {
-            //DragDropを初期化
-            dragDropComponent.OnPointerDown(eventData);
-            
-            //スナップ結果のコールバックを登録する
-            dragDropComponent.OnSnapResult = (success) =>
+            if (success)
             {
-                if (success)
-                {
-                    //スナップ成功：UIアイコンを操作不可にする
-                    if (image != null) image.raycastTarget = false;
-                }
-                else
-                {
-                    //スナップ失敗：UIアイコンを再表示、パネルを再表示する
-                    if (image != null) image.enabled = true;
-                    if (UI != null) UI.SlideInPanel();
-                    if (spawnedObject != null) Destroy(spawnedObject);
-                }
-                dragDropComponent.OnSnapResult = null;
-            };
-        }
-        else
-        {
-            Debug.LogWarning("生成されたオブジェクトにDragDropコンポーネントがありません");
-        }
+                //成功：UIアイコンを操作不可
+                rawImage.raycastTarget = false;
+                //親オブジェクトを変更
+                targetObject.transform.SetParent(field);
+            }
+            else
+            {
+                //失敗：元の位置に戻してUIアイコンを再表示、パネルを戻す
+                targetObject.transform.position = objectPlace.position;
+                rawImage.enabled = true;
+                UI.SlideInPanel();
+            }
+            dragDropComponent.OnSnapResult = null;
+        };
     }
     
     public void OnDrag(PointerEventData eventData)
     {
-        //生成オブジェクトのドラッグ処理を実行
-        if (dragDropComponent != null)
-        {
-            dragDropComponent.OnDrag(eventData);
-        }
+        dragDropComponent.OnDrag(eventData);
     }
     
     public void OnEndDrag(PointerEventData eventData)
     {
-        //生成オブジェクトのドロップ処理を実行
-        if (dragDropComponent != null)
-        {
-            dragDropComponent.OnPointerUp(eventData);
-            dragDropComponent = null;
-        }
+        dragDropComponent.OnPointerUp(eventData);
     }
 }

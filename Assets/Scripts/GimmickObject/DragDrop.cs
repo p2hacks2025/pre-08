@@ -9,8 +9,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private float fixedY;               //初期y座標
     private Vector3 originalPosition;   //初期座標
     private SnapSlot currentSlot;       //スロット情報
-    [SerializeField] private bool isPlaced = false;      //配置済みフラグ
-    
     [SerializeField] private float snapDistance = 1.0f;  //スナップ範囲
     
     //スナップ結果を通知するコールバック
@@ -84,7 +82,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (nearestSlot != null && nearestDistance <= snapDistance)
         {
             transform.position = nearestSlotObject.transform.position;
-            if (!isPlaced) isPlaced = true;
             nearestSlot.Snap(gameObject);
             currentSlot = nearestSlot;
             
@@ -98,8 +95,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             
             //スナップ失敗を通知
             OnSnapResult?.Invoke(false);
-            
-            if (!isPlaced) Destroy(gameObject);
         }
+    }
+
+    public void UpdateFixedY(float newY)
+    {
+        fixedY = newY;
+    }
+    public void SetOffset(Vector3 newOffset)
+    {
+        offset = newOffset;
     }
 }

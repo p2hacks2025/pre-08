@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserPointer
   speed: 5
   laserRenderer: {fileID: 4189949226262765154}
+  hitParticlePrefab: {fileID: 4749488915344440188, guid: 7a2bd0ff7efa34b7d8fd8f9012b2db1b, type: 3}
   laserColor: 0
 --- !u!1 &4042609129476870301
 GameObject:
