@@ -18,6 +18,7 @@ Material:
   - _EMISSION_COLOR_COLOR
   - _EMISSION_MAP_MODE_2D
   - _PARALLAX_MAP_MODE_2D
+  - _TINT_AREA_ALL
   - _TINT_COLOR_ENABLED
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -36,9 +37,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _EmissionIntensity: 6.4
+    - _TintAreaMode: 1
     m_Colors:
     - _Color: {r: 27.47137, g: 25.27664, b: 2.643471, a: 0.98039216}
-    - _EmissionColor: {r: 2.9960785, g: 2.8892312, b: 0.06218269, a: 1}
+    - _EmissionColor: {r: 0.7490196, g: 0.7223078, b: 0.015545673, a: 1}
+    - _TintColor: {r: 0.509434, g: 0.46898463, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &8189552978927452295
