@@ -7,17 +7,16 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Absorb_purple
+  m_Name: Aura_orange
   m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHA_TRANSITION_MAP_MODE_2D
   - _BASE_MAP_MODE_2D
-  - _EMISSION_AREA_ALL
-  - _EMISSION_COLOR_BASECOLOR
+  - _BASE_MAP_ROTATION_ENABLED
+  - _EMISSION_COLOR_COLOR
   - _EMISSION_MAP_MODE_2D
-  - _FLOW_MAP_TARGET_BASE
   - _PARALLAX_MAP_MODE_2D
   - _TINT_AREA_ALL
   - _TINT_COLOR_ENABLED
@@ -29,6 +28,7 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
+  - MOTIONVECTORS
   - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
@@ -59,8 +59,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 758eb11626075dd47b04f3546cd1bff0, type: 3}
-        m_Scale: {x: 1.94, y: 3.55}
+        m_Texture: {fileID: 2800000, guid: e9ec6223cd5a9c8468ac3cc6b79a5563, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap2DArray:
         m_Texture: {fileID: 0}
@@ -103,7 +103,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FlowMap:
-        m_Texture: {fileID: 2800000, guid: 277df185ca574134f824b2d37d114cca, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GradientMap:
@@ -154,10 +154,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _eff_tex_glow_001:
-        m_Texture: {fileID: 2800000, guid: 11a11064e4344024e898768996f6b793, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -172,6 +168,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AlphaTransitionMapChannelsX: 0
@@ -193,8 +190,8 @@ Material:
     - _AlphaTransitionMapSecondTextureRowCount: 1
     - _AlphaTransitionMapSecondTextureSliceCount: 4
     - _AlphaTransitionMapSliceCount: 4
-    - _AlphaTransitionMode: 2
-    - _AlphaTransitionProgress: 0.267
+    - _AlphaTransitionMode: 0
+    - _AlphaTransitionProgress: 0
     - _AlphaTransitionProgressCoord: 0
     - _AlphaTransitionProgressCoordSecondTexture: 0
     - _AlphaTransitionProgressSecondTexture: 0
@@ -202,13 +199,13 @@ Material:
     - _BaseMapChannel: 0
     - _BaseMapMirrorSampling: 0
     - _BaseMapMode: 0
-    - _BaseMapOffsetXCoord: 1
-    - _BaseMapOffsetYCoord: 11
+    - _BaseMapOffsetXCoord: 0
+    - _BaseMapOffsetYCoord: 0
     - _BaseMapProgress: 0
     - _BaseMapProgressCoord: 0
     - _BaseMapRandomRowCoord: 0
     - _BaseMapRandomRowSelectionEnabled: 0
-    - _BaseMapRotation: 0
+    - _BaseMapRotation: 0.25
     - _BaseMapRotationCoord: 0
     - _BaseMapRowCount: 1
     - _BaseMapSliceCount: 4
@@ -225,7 +222,7 @@ Material:
     - _BaseMapToneShadows: 0.25
     - _BaseMapToneShadowsCoord: 0
     - _Blend: 0
-    - _BlendDst: 1
+    - _BlendDst: 10
     - _BlendModePreserveSpecular: 1
     - _BlendSrc: 5
     - _BumpScale: 1
@@ -240,15 +237,15 @@ Material:
     - _DepthFadeWidth: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveSharpness: 0.691
+    - _DissolveSharpness: 0.5
     - _DissolveSharpnessSecondTexture: 0.5
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _EmissionAreaType: 1
-    - _EmissionColorType: 1
-    - _EmissionIntensity: 4.28
+    - _EmissionAreaType: 0
+    - _EmissionColorType: 0
+    - _EmissionIntensity: 1
     - _EmissionIntensityCoord: 0
-    - _EmissionMapChannelsX: 3
+    - _EmissionMapChannelsX: 0
     - _EmissionMapMode: 0
     - _EmissionMapOffsetXCoord: 0
     - _EmissionMapOffsetYCoord: 0
@@ -263,8 +260,8 @@ Material:
     - _FlowIntensityCoord: 0
     - _FlowMapChannelsX: 0
     - _FlowMapChannelsY: 1
-    - _FlowMapOffsetXCoord: 1
-    - _FlowMapOffsetYCoord: 11
+    - _FlowMapOffsetXCoord: 0
+    - _FlowMapOffsetYCoord: 0
     - _FlowMapTarget: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -293,15 +290,14 @@ Material:
     - _ParallaxMapSliceCount: 4
     - _ParallaxMapTarget: 1
     - _ParallaxStrength: 0.3
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RenderType: 2
     - _RimTransparencyEnabled: 0
     - _RimTransparencyProgress: 0.5
-    - _RimTransparencyProgressCoord: 1
-    - _RimTransparencySharpness: 0
-    - _RimTransparencySharpnessCoord: 11
+    - _RimTransparencyProgressCoord: 0
+    - _RimTransparencySharpness: 0.5
+    - _RimTransparencySharpnessCoord: 0
     - _ShadowCasterAlphaAffectedByAlphaTransitionMap: 0
     - _ShadowCasterAlphaAffectedByFlowMap: 0
     - _ShadowCasterAlphaAffectedByTintColor: 0
@@ -336,7 +332,7 @@ Material:
     - _TintRimProgressCoord: 0
     - _TintRimSharpness: 0.5
     - _TintRimSharpnessCoord: 0
-    - _TransparentBlendMode: 1
+    - _TransparentBlendMode: 0
     - _VertexAlphaMode: 0
     - _VertexDeformationBaseValue: 0
     - _VertexDeformationEnabled: 0
@@ -346,6 +342,7 @@ Material:
     - _VertexDeformationMapOffsetXCoord: 0
     - _VertexDeformationMapOffsetYCoord: 0
     - _WorkflowMode: 1
+    - _XRMotionVectorsPass: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteOverride: -1
@@ -357,13 +354,13 @@ Material:
     - _BaseMapToneHighlightsColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseMapToneMidtonesColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _BaseMapToneShadowsColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 2, g: 2, b: 2, a: 1}
-    - _EmissionColor: {r: 0.0066922167, g: 0.0024117234, b: 0.0038020217, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TintColor: {r: 0.7891655, g: 0, b: 2, a: 1}
+    - _TintColor: {r: 14.55994, g: 1.7932984, b: 0.30218711, a: 0.24313726}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3045636554359092680
+--- !u!114 &1245440764995488710
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,4 +372,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 10
