@@ -557,7 +557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b85738e281a4266a58bf6bec19f8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoonMirror
-  snapDistance: 1
+  isCanDrag: 0
+  isDragging: 0
   conditions:
   - color: 7
     laser: {fileID: 4698896322700318482}
