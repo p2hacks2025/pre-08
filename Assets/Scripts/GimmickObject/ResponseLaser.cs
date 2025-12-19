@@ -6,13 +6,13 @@ public class LaserCondition
 {
     public LaserColorType color;    //色
     public FireLaser laser;         //レーザー
-    [HideInInspector] public bool isDetected = false; //検知フラグ
+    [HideInInspector] public bool isDetected = false;       //検知フラグ
 }
 public class ResponseLaser : DragDrop
 {
-    [SerializeField] protected LaserCondition[] conditions;  //検知条件
-    [SerializeField] private int requiredCount = 0;          //必要な条件数(0で全条件)
-    protected bool isActivated = false;                      //起動済みフラグ
+    [SerializeField] protected LaserCondition[] conditions; //検知条件
+    [SerializeField] private int requiredCount = 0;         //必要な条件数(0で全条件)
+    protected bool isActivated = false;                     //起動済みフラグ
     
     protected void Update()
     {

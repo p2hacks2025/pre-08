@@ -848,7 +848,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffd325a65ddf83646905ca744f6c8cca, type: 2}
+  - {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1042,7 +1042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2184846886567347909}
   - component: {fileID: 7706138587448816470}
-  - component: {fileID: 7573095607297013916}
+  - component: {fileID: 4483312434496781867}
   m_Layer: 5
   m_Name: LanternLight
   m_TagString: Untagged
@@ -1090,7 +1090,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7573095607297013916
+--- !u!114 &4483312434496781867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1099,18 +1099,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 8795037614783098521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf2ceb1b03b34172815065f4915b6f8, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd8f248e7f234c4d92dc6fabb0cd6a8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ColorChanger
-  snapDistance: 1
+  m_EditorClassIdentifier: Assembly-CSharp::LanternLight
+  isCanDrag: 0
+  isDragging: 0
   conditions:
-  - color: 3
+  - color: 7
     laser: {fileID: 3561128786017397102}
     isDetected: 0
-  - color: 0
+  - color: 3
     laser: {fileID: 7075623355400106865}
     isDetected: 0
   requiredCount: 1
+  datas:
+  - colorType: 0
+    colorMaterial: {fileID: 2100000, guid: fe29d67303e8c1742a8afb5e09436f17, type: 2}
+  - colorType: 1
+    colorMaterial: {fileID: 2100000, guid: 93d578de6b046b24d8c1d554777ebc87, type: 2}
+  - colorType: 2
+    colorMaterial: {fileID: 2100000, guid: 0961a8a67cbbf1249b56a70a0878cf9a, type: 2}
+  - colorType: 3
+    colorMaterial: {fileID: 2100000, guid: ffd325a65ddf83646905ca744f6c8cca, type: 2}
+  - colorType: 4
+    colorMaterial: {fileID: 2100000, guid: fe7c6b834a0caa04aa12705b9d84ce3c, type: 2}
+  - colorType: 5
+    colorMaterial: {fileID: 2100000, guid: 56a90dceb5bc859498ccec3c6f2ffa31, type: 2}
+  - colorType: 6
+    colorMaterial: {fileID: 2100000, guid: 2a02629862fb4834bad8294a6b70405c, type: 2}
+  - colorType: 7
+    colorMaterial: {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
+  lightRenderers:
+  - {fileID: 8096905498327305622}
+  - {fileID: 5735043640660324844}
 --- !u!1 &9202563901699743731
 GameObject:
   m_ObjectHideFlags: 0

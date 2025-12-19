@@ -1,14 +1,14 @@
 using UnityEngine;
 
 [System.Serializable]
-public class CollisionData
+public class MoonData
 {
     public LaserColorType colorType;
     public GameObject particlePrefab;
 }
 public class MoonMirror : DirectionChanger
 {
-    [SerializeField] private CollisionData[] datas; //各色衝突パーティクルデータ
+    [SerializeField] private MoonData[] datas;  //各色衝突パーティクルデータ
     
     protected override void DetectLaser()
     {
