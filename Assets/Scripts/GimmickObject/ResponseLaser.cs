@@ -14,7 +14,7 @@ public class ResponseLaser : DragDrop
     [SerializeField] private int requiredCount = 0;          //必要な条件数(0で全条件)
     protected bool isActivated = false;                      //起動済みフラグ
     
-    protected virtual void Update()
+    protected void Update()
     {
         if (isActivated || conditions == null) return;
         
@@ -22,6 +22,18 @@ public class ResponseLaser : DragDrop
         int targetCount = requiredCount > 0 ? requiredCount : conditions.Length;
         
         //各条件をチェック
+        DetectLaser();
+        
+        //必要な条件数が満たされたかチェック
+        if (CheckConditions(targetCount))
+        {
+            isActivated = true;
+            OutputLaser();
+        }
+    }
+    
+    protected virtual void DetectLaser()
+    {
         foreach (var con in conditions)
         {
             if (con.laser == null || con.isDetected) continue;
@@ -41,15 +53,7 @@ public class ResponseLaser : DragDrop
                 }
             }
         }
-        
-        //必要な条件数が満たされたかチェック
-        if (CheckConditions(targetCount))
-        {
-            isActivated = true;
-            OutputLaser();
-        }
     }
-    
     protected virtual void OutputLaser()
     {
         Debug.Log($"{gameObject.name}: 条件が満たされました");

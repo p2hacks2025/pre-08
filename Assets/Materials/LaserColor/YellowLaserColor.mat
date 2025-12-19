@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LightGreen
+  m_Name: YellowLaserColor
   m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -250,7 +250,7 @@ Material:
     - _DstBlendAlpha: 10
     - _EmissionAreaType: 1
     - _EmissionColorType: 0
-    - _EmissionIntensity: 20
+    - _EmissionIntensity: 6.4
     - _EmissionIntensityCoord: 0
     - _EmissionMapChannelsX: 0
     - _EmissionMapMode: 0
@@ -365,8 +365,8 @@ Material:
     - _BaseMapToneHighlightsColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseMapToneMidtonesColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _BaseMapToneShadowsColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 5.0288854, g: 30.63575, b: 5.6243944, a: 0.98039216}
-    - _EmissionColor: {r: 0.12521449, g: 0.61886764, b: 0.11559975, a: 1}
+    - _Color: {r: 27.47137, g: 25.27664, b: 2.643471, a: 0.98039216}
+    - _EmissionColor: {r: 2.9960785, g: 2.8892312, b: 0.06218269, a: 1}
     - _MainSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _NoiseSpeed: {r: 0, g: -0.7, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

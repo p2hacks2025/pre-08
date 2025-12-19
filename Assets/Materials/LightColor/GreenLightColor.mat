@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
+  m_Name: GreenLightColor
   m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 38a6a985a3745fa499902c0ce2d5a60b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0050c43c02f66e343b9b0c0d14a753a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap2DArray:
@@ -115,7 +115,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 916b6a91845c3ca40bf9d8a1998fff54, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0050c43c02f66e343b9b0c0d14a753a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -251,7 +251,7 @@ Material:
     - _DstBlendAlpha: 10
     - _EmissionAreaType: 1
     - _EmissionColorType: 0
-    - _EmissionIntensity: 2.4
+    - _EmissionIntensity: 6.6
     - _EmissionIntensityCoord: 0
     - _EmissionMapChannelsX: 0
     - _EmissionMapMode: 0
@@ -366,12 +366,12 @@ Material:
     - _BaseMapToneHighlightsColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseMapToneMidtonesColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _BaseMapToneShadowsColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 11.454586, g: 10.541175, b: 95.87451, a: 0.98039216}
-    - _EmissionColor: {r: 0, g: 0.03402111, b: 0.81225246, a: 1}
+    - _Color: {r: 5.0288854, g: 30.63575, b: 5.6243944, a: 0.98039216}
+    - _EmissionColor: {r: 0.014304525, g: 0.6150943, b: 0, a: 1}
     - _MainSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _NoiseSpeed: {r: 0, g: -0.7, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TintColor: {r: 0, g: 0.004376533, b: 0.9245283, a: 1}
+    - _TintColor: {r: 0, g: 0.4037736, b: 0, a: 1}
     - _Vector2: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

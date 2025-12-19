@@ -1,32 +1,42 @@
 using UnityEngine;
 
-public class MoonMirror : ResponseLaser
+[System.Serializable]
+public class CollisionData
 {
-    protected override void OutputLaser()
+    public LaserColorType colorType;
+    public GameObject particlePrefab;
+}
+public class MoonMirror : DirectionChanger
+{
+    [SerializeField] private CollisionData[] datas; //各色衝突パーティクルデータ
+    
+    protected override void DetectLaser()
     {
-        //条件が2つ以外のときは処理しない
-        if (conditions == null || conditions.Length != 2) return;
-        
-        //どちらのレーザーがアクティブか判定して、反対側から出力
-        for (int i = 0; i < conditions.Length; i++)
+        foreach (var con in conditions)
         {
-            if (conditions[i].laser != null && conditions[i].laser.isActive)
+            if (con.laser == null || con.isDetected) continue;
+            
+            //レーザーがアクティブな場合
+            if (con.laser.isActive)
             {
-                //反対側のレーザーを取得
-                int oppositeIndex = (i + 1) % conditions.Length;
-                var outputLaser = conditions[oppositeIndex].laser;
-                
-                if (outputLaser != null)
+                //White色は「どの色でもOK」として扱う
+                if (con.color == LaserColorType.White || con.laser.laserColor == con.color)
                 {
-                    //入力レーザーの色で出力
-                    outputLaser.SetColor(conditions[i].laser.laserColor);
-                    outputLaser.Fire();
-                    //衝突パーティクルの生成
-                    if (LaserColor.Instance.GetCollisionParticle(conditions[i].laser.laserColor) != null)
+                    con.isDetected = true;
+                    //色が一致する衝突パーティクルを生成
+                    foreach (var data in datas)
                     {
-                        Instantiate(LaserColor.Instance.GetCollisionParticle(conditions[i].laser.laserColor), transform.position, Quaternion.identity);
+                        if (data.colorType == con.laser.laserColor && data.particlePrefab != null)
+                        {
+                            Instantiate(data.particlePrefab, transform.position, transform.rotation);
+                            break;
+                        }
                     }
-                    return;
+                }
+                else
+                {
+                    //色不一致
+                    Debug.LogWarning($"{gameObject.name}: レーザー色が条件不一致 (入力: {con.laser.laserColor}, 必要: {con.color})");
                 }
             }
         }

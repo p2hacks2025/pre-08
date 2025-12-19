@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LightRed
+  m_Name: SkeblueLightColor
   m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -18,6 +18,7 @@ Material:
   - _EMISSION_COLOR_COLOR
   - _EMISSION_MAP_MODE_2D
   - _PARALLAX_MAP_MODE_2D
+  - _TINT_AREA_ALL
   - _TINT_COLOR_ENABLED
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -250,7 +251,7 @@ Material:
     - _DstBlendAlpha: 10
     - _EmissionAreaType: 1
     - _EmissionColorType: 0
-    - _EmissionIntensity: 49.1
+    - _EmissionIntensity: 2
     - _EmissionIntensityCoord: 0
     - _EmissionMapChannelsX: 0
     - _EmissionMapMode: 0
@@ -326,7 +327,7 @@ Material:
     - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _TintAreaMode: 0
+    - _TintAreaMode: 1
     - _TintBlendRate: 1
     - _TintBlendRateCoord: 0
     - _TintColorMode: 0
@@ -365,12 +366,12 @@ Material:
     - _BaseMapToneHighlightsColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseMapToneMidtonesColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _BaseMapToneShadowsColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 95.8745, g: 4.793724, b: 7.1905866, a: 0.98039216}
-    - _EmissionColor: {r: 1.7252148, g: 0.04882654, b: 0.05847966, a: 1}
+    - _Color: {r: 5.123624, g: 37.26095, b: 38.246765, a: 0.98039216}
+    - _EmissionColor: {r: 0, g: 0.8862748, b: 1, a: 1}
     - _MainSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _NoiseSpeed: {r: 0, g: -0.7, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 0, g: 0.8993342, b: 1, a: 1}
     - _Vector2: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

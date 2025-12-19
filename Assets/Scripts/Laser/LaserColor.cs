@@ -18,9 +18,8 @@ public enum LaserColorType
 public class LaserColorData
 {
     public LaserColorType colorType;
-    public Material material;
+    public Material materialLaser;
     public Material materialColor;
-    public GameObject collisionParticle;
 }
 
 public class LaserColor : MonoBehaviour
@@ -49,19 +48,19 @@ public class LaserColor : MonoBehaviour
         {
             if (data.colorType == colorType)
             {
-                return data.material;
+                return data.materialLaser;
             }
         }
         return null;
     }
-    public GameObject GetCollisionParticle(LaserColorType colorType)
+    public Material GetColorMaterial(LaserColorType colorType)
     {
-        //ColorTypeから衝突パーティクルを取得する
+        //ColorTypeからカラーマテリアルを取得する
         foreach (var data in colorDataArray)
         {
             if (data.colorType == colorType)
             {
-                return data.collisionParticle;
+                return data.materialColor;
             }
         }
         return null;

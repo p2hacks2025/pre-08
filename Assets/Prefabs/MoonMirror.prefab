@@ -566,6 +566,9 @@ MonoBehaviour:
     laser: {fileID: 3881361916896925730}
     isDetected: 0
   requiredCount: 1
+  datas:
+  - colorType: 0
+    particlePrefab: {fileID: 8345801913770411524, guid: bb661c9431c2b410297114896f46acf7, type: 3}
 --- !u!1 &8084980843411942178
 GameObject:
   m_ObjectHideFlags: 0
