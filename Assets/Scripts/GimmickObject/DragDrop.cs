@@ -9,7 +9,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private float fixedY;               //初期y座標
     private Vector3 originalPosition;   //初期座標
     private SnapSlot currentSlot;       //スロット情報
-    [SerializeField] private float snapDistance = 1.0f;  //スナップ範囲
+    private SnapSlot originalSlot;      //ドラッグ開始時のスロット
+    private float snapDistance = 1.0f;  //スナップ範囲
+    [SerializeField] private bool isCanDrag = true;     //ドラッグ可能フラグ
+    [HideInInspector] public bool isDragging = false;   //ドラッグ中フラグ
     
     //スナップ結果を通知するコールバック
     public Action<bool> OnSnapResult;
@@ -24,13 +27,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!isCanDrag) return;
+
+        //ドラッグ開始
+        isDragging = true;
         //ドラッグ開始時の位置を保存
         originalPosition = transform.position;
         
-        //現在のスロットを解放
+        //元のスロットを保存し、ドラッグ開始を通知
+        originalSlot = currentSlot;
         if (currentSlot != null)
         {
-            currentSlot.Release(gameObject);
+            currentSlot.StartDragging(gameObject);
             currentSlot = null;
         }
         
@@ -44,6 +52,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isCanDrag || !isDragging) return;
+
         //スクリーン座標を変換
         Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, mainCamera.WorldToScreenPoint(transform.position).z);
         Vector3 worldPoint = mainCamera.ScreenToWorldPoint(screenPos);
@@ -54,6 +64,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!isCanDrag || !isDragging) return;
+        
         //"SnapPos"タグのオブジェクトを全て検索
         GameObject[] slotObjects = GameObject.FindGameObjectsWithTag("SnapPos");
         
@@ -85,6 +97,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             nearestSlot.Snap(gameObject);
             currentSlot = nearestSlot;
             
+            //元のスロットを完全に解放
+            if (originalSlot != null)
+            {
+                originalSlot.FinishDragging();
+                originalSlot = null;
+            }
+            
+            //ドラッグ終了
+            isDragging = false;
+            
             //スナップ成功を通知
             OnSnapResult?.Invoke(true);
         }
@@ -92,6 +114,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         {
             //スロットが範囲外の場合は元の位置に戻す
             transform.position = originalPosition;
+            
+            //元のスロットを再占有
+            if (originalSlot != null)
+            {
+                originalSlot.CancelDragging();
+                currentSlot = originalSlot;
+                originalSlot = null;
+            }
+            
+            //ドラッグ終了
+            isDragging = false;
             
             //スナップ失敗を通知
             OnSnapResult?.Invoke(false);

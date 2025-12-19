@@ -962,6 +962,9 @@ MonoBehaviour:
   - colorType: 6
     materialLaser: {fileID: 2100000, guid: 5aadfd7575d074a18ae54762ada38119, type: 2}
     materialColor: {fileID: 2100000, guid: 2a02629862fb4834bad8294a6b70405c, type: 2}
+  - colorType: 7
+    materialLaser: {fileID: 0}
+    materialColor: {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
 --- !u!114 &638543560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3802,6 +3805,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4202075776878268187, guid: c39b5bd672c9e4ab78c9ab67e387bad9, type: 3}
+      propertyPath: datas.Array.data[0].particlePrefab
+      value: 
+      objectReference: {fileID: 8151386180526833478, guid: 35a26f5df91958542b5482dbd1f7e951, type: 3}
     - target: {fileID: 7843235581915502446, guid: c39b5bd672c9e4ab78c9ab67e387bad9, type: 3}
       propertyPath: m_Name
       value: MoonMirror
@@ -4433,6 +4440,10 @@ PrefabInstance:
     - target: {fileID: 2184846886567347909, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573095607297013916, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
+      propertyPath: conditions.Array.data[0].color
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8795037614783098521, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
       propertyPath: m_Name

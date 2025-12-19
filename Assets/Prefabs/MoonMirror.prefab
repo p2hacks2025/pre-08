@@ -568,7 +568,19 @@ MonoBehaviour:
   requiredCount: 1
   datas:
   - colorType: 0
-    particlePrefab: {fileID: 8345801913770411524, guid: bb661c9431c2b410297114896f46acf7, type: 3}
+    particlePrefab: {fileID: 8151386180526833478, guid: 35a26f5df91958542b5482dbd1f7e951, type: 3}
+  - colorType: 1
+    particlePrefab: {fileID: 2902417928551854862, guid: 5bedf016375d38c4798bf069b271ac15, type: 3}
+  - colorType: 2
+    particlePrefab: {fileID: 1868488275137447169, guid: 0951fbf5b24fd194a8d2b781a668db07, type: 3}
+  - colorType: 3
+    particlePrefab: {fileID: 8527189847784413904, guid: cd8b623769890d849ac5a797d814ccf8, type: 3}
+  - colorType: 4
+    particlePrefab: {fileID: 104129425667712618, guid: 4a5856dfd88efc244a9943d69034244d, type: 3}
+  - colorType: 5
+    particlePrefab: {fileID: 5310142728961816039, guid: 454086f8be0d1114db198ccf6a74f669, type: 3}
+  - colorType: 6
+    particlePrefab: {fileID: 8491916144041439168, guid: 0aa66b06e78c4f84fb98cf967e33b0e7, type: 3}
 --- !u!1 &8084980843411942178
 GameObject:
   m_ObjectHideFlags: 0
