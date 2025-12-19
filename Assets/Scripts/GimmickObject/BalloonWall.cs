@@ -1,32 +1,16 @@
 using UnityEngine;
 
-[System.Serializable]
-public class BalloonData
-{
-    public LaserColorType colorType;
-    public Material colorMaterial;
-}
 public class BalloonWall : ResponseLaser
 {
-    [SerializeField] private BalloonData[] datas;
     [SerializeField] private Renderer lightRenderer;
     [SerializeField] private GameObject breakEffect;        //破壊エフェクト
     [SerializeField] private LaserColorType targetColor;    //壊れる色
 
     void Start()
     {
-        if (conditions == null || lightRenderer == null) return;
-        //初期色のマテリアルを設定
-        foreach (var data in datas)
+        if (lightRenderer != null)
         {
-            if (data.colorType == targetColor)
-            {
-                if (data.colorMaterial != null)
-                {
-                    lightRenderer.material = data.colorMaterial;
-                }
-                break;
-            }
+            ApplyMaterial(lightRenderer, targetColor);
         }
     }
 

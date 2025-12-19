@@ -1166,21 +1166,21 @@ MonoBehaviour:
     laser: {fileID: 7075623355400106865}
     isDetected: 0
   requiredCount: 1
-  datas:
+  materialDatas:
   - colorType: 0
     colorMaterial: {fileID: 2100000, guid: fe29d67303e8c1742a8afb5e09436f17, type: 2}
   - colorType: 1
-    colorMaterial: {fileID: 2100000, guid: 93d578de6b046b24d8c1d554777ebc87, type: 2}
-  - colorType: 2
-    colorMaterial: {fileID: 2100000, guid: 0961a8a67cbbf1249b56a70a0878cf9a, type: 2}
-  - colorType: 3
     colorMaterial: {fileID: 2100000, guid: ffd325a65ddf83646905ca744f6c8cca, type: 2}
+  - colorType: 2
+    colorMaterial: {fileID: 2100000, guid: 56a90dceb5bc859498ccec3c6f2ffa31, type: 2}
+  - colorType: 3
+    colorMaterial: {fileID: 2100000, guid: 0961a8a67cbbf1249b56a70a0878cf9a, type: 2}
   - colorType: 4
     colorMaterial: {fileID: 2100000, guid: fe7c6b834a0caa04aa12705b9d84ce3c, type: 2}
   - colorType: 5
-    colorMaterial: {fileID: 2100000, guid: 56a90dceb5bc859498ccec3c6f2ffa31, type: 2}
-  - colorType: 6
     colorMaterial: {fileID: 2100000, guid: 2a02629862fb4834bad8294a6b70405c, type: 2}
+  - colorType: 6
+    colorMaterial: {fileID: 2100000, guid: 93d578de6b046b24d8c1d554777ebc87, type: 2}
   - colorType: 7
     colorMaterial: {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
   lightRenderers:

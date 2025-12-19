@@ -4,12 +4,12 @@ using UnityEngine;
 public enum LaserColorType
 {
     Red,
-    Orange,
-    Yellow,
     Green,
-    Skyblue,
     Blue,
+    Yellow,
+    Skyblue,
     Purple,
+    Orange,
     White
 }
 

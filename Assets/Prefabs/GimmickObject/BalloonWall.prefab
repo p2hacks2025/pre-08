@@ -908,21 +908,21 @@ MonoBehaviour:
     laser: {fileID: 3245423978535257042}
     isDetected: 0
   requiredCount: 1
-  datas:
+  materialDatas:
   - colorType: 0
     colorMaterial: {fileID: 2100000, guid: 579a4eb648b48a749ad5a17f06e736eb, type: 2}
-  - colorType: 1
-    colorMaterial: {fileID: 2100000, guid: 255512d4025f9cd4c9820dc581bcc5b3, type: 2}
   - colorType: 2
-    colorMaterial: {fileID: 2100000, guid: 47b97c1e16dfbea4083ada8a980240b2, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 1206f83ccda5bb448aeedcd0f8283fe7, type: 2}
   - colorType: 3
-    colorMaterial: {fileID: 2100000, guid: 7ffece4c41fe9b14199afed3046401a1, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 47b97c1e16dfbea4083ada8a980240b2, type: 2}
   - colorType: 4
     colorMaterial: {fileID: 2100000, guid: f71b688fecf0f7446aec8fd66a2adefc, type: 2}
   - colorType: 5
-    colorMaterial: {fileID: 2100000, guid: 1206f83ccda5bb448aeedcd0f8283fe7, type: 2}
-  - colorType: 6
     colorMaterial: {fileID: 2100000, guid: 0d45f99f77dda00469fa0f68c85be6e9, type: 2}
+  - colorType: 6
+    colorMaterial: {fileID: 2100000, guid: 255512d4025f9cd4c9820dc581bcc5b3, type: 2}
+  - colorType: 7
+    colorMaterial: {fileID: 0}
   lightRenderer: {fileID: 8416592358904386562}
   breakEffect: {fileID: 8151386180526833478, guid: 35a26f5df91958542b5482dbd1f7e951, type: 3}
   targetColor: 0

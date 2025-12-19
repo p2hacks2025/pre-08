@@ -8,10 +8,20 @@ public class LaserCondition
     public FireLaser laser;         //レーザー
     [HideInInspector] public bool isDetected = false;       //検知フラグ
 }
+
+//マテリアルデータ（共通）
+[System.Serializable]
+public class MaterialData
+{
+    public LaserColorType colorType;
+    public Material colorMaterial;
+}
+
 public class ResponseLaser : DragDrop
 {
     [SerializeField] protected LaserCondition[] conditions; //検知条件
     [SerializeField] private int requiredCount = 0;         //必要な条件数(0で全条件)
+    [SerializeField] protected MaterialData[] materialDatas; //マテリアルデータ
     protected bool isActivated = false;                     //起動済みフラグ
     
     protected void Update()
@@ -46,11 +56,6 @@ public class ResponseLaser : DragDrop
                 {
                     con.isDetected = true;
                 }
-                else
-                {
-                    //色不一致
-                    Debug.LogWarning($"{gameObject.name}: レーザー色が条件不一致 (入力: {con.laser.laserColor}, 必要: {con.color})");
-                }
             }
         }
     }
@@ -74,6 +79,21 @@ public class ResponseLaser : DragDrop
         foreach (var condition in conditions)
         {
             condition.isDetected = false;
+        }
+    }
+    
+    //マテリアル適用（共通処理）
+    protected void ApplyMaterial(Renderer renderer, LaserColorType colorType)
+    {
+        if (materialDatas == null || renderer == null) return;
+        
+        foreach (var data in materialDatas)
+        {
+            if (data.colorType == colorType && data.colorMaterial != null)
+            {
+                renderer.material = data.colorMaterial;
+                break;
+            }
         }
     }
 }

@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    private ChangeScene changeScene;
-    private string pendingScene = "";
-    private bool waitingForClick = false;
-
-    //シングルトンインスタンス
     public static GameManager Instance { get; private set; }
+    
+    private ChangeScene changeScene;
+    private string sceneName = "";                  //シーン名
+    [SerializeField] private float delay = 2.0f;    //遅延時間(秒)
+    private float timer = 0.0f;                     //タイマー
 
     private void Awake()
     {
@@ -23,51 +24,45 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         //コンポーネントの取得
         changeScene = GetComponent<ChangeScene>();
     }
-    
-    private void Update()
-    {
-        //左クリック待機中の場合
-        if (waitingForClick && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            if (pendingScene != "")
-            {
-                if (changeScene != null)
-                {
-                    changeScene.LoadScene(pendingScene);
-                }
-                pendingScene = "";
-                waitingForClick = false;
-            }
-        }
 
-        //Rキーでシーン再読み込み（デバッグ用）
-        if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
+    void Update()
+    {
+        if (timer > 0)
         {
-            if (changeScene != null)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                changeScene.ReloadCurrentScene();
+                timer = 0;
+                //時間経過後にゲームオーバーシーンへ遷移
+                changeScene.LoadScene(sceneName);
             }
         }
     }
 
-    //左クリック待ちでシーン遷移
-    public void LoadSceneWithClick(string sceneName)
+    public void GoToTitle()
     {
-        pendingScene = sceneName;
-        waitingForClick = true;
+        Debug.Log("タイトルへ戻る");
+        //遅延しながらタイトルシーンへ遷移
+        timer = delay;
+        sceneName = "TitleScene";
     }
-
     public void GameOver()
     {
-        LoadSceneWithClick("GameOverScene");
+        Debug.Log("ゲームオーバー！");
+        //遅延しながらゲームオーバーシーンへ遷移
+        timer = delay;
+        sceneName = "GameOverScene";
     }
     public void GameClear()
     {
-        LoadSceneWithClick("GameClearScene");
+        Debug.Log("ゲームクリア！");
+        //遅延しながらゲームクリアシーンへ遷移
+        timer = delay;
+        sceneName = "GameClearScene";
     }
 }

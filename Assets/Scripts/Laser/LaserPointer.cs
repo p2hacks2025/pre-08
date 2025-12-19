@@ -68,12 +68,12 @@ public class LaserPointer : MonoBehaviour
                     fireLaser.SetColor(laserColor);
                     fireLaser.isActive = true;
                 }
-            }
+            }/*
             else if (other.gameObject.CompareTag("Defenser"))
             {
                 //ゲームオーバー処理
                 GameManager.Instance.GameOver();
-            }
+            }*/
         }
     }
 }
