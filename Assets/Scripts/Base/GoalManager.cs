@@ -1,57 +1,41 @@
 using UnityEngine;
 
-// ゴール条件の設定
-[System.Serializable]
-public class GoalCondition
+public class GoalManager : ResponseLaser
 {
-    public LaserColorType colorType;     //必要な色
-    public int requiredCount = 1;        //必要な回数
-    [HideInInspector] public int currentCount = 0; //現在のカウント
-}
+    protected override void OutputLaser()
+    {
+        if (conditions == null) return;
 
-public class GoalManager : MonoBehaviour
-{
-    [SerializeField] private GoalCondition[] goalConditions;
-    
-    public void OnLaserHit(LaserColorType hitColor)
-    {
-        //該当する色の条件を探してカウント
-        foreach (var condition in goalConditions)
-        {
-            if (condition.colorType == hitColor && condition.currentCount < condition.requiredCount)
-            {
-                condition.currentCount++;
-                Debug.Log($"{hitColor}が{condition.currentCount}/{condition.requiredCount}回当たりました");
-                break;
-            }
-        }
-        
-        //全ての条件が満たされたかチェック
-        CheckGoalConditions();
-    }
-    
-    private void CheckGoalConditions()
-    {
+        //全ての条件が満たされているか確認
         bool allConditionsMet = true;
         
-        foreach (var condition in goalConditions)
+        foreach (var con in conditions)
         {
-            if (condition.currentCount < condition.requiredCount)
+            //条件が検知されていない場合は失敗
+            if (!con.isDetected || con.laser == null)
+            {
+                allConditionsMet = false;
+                break;
+            }
+            
+            //White以外の場合、色が一致しているか確認
+            if (con.color != LaserColorType.White && con.laser.laserColor != con.color)
             {
                 allConditionsMet = false;
                 break;
             }
         }
         
+        //結果に応じてシーン遷移（左クリック待ち）
         if (allConditionsMet)
         {
             Debug.Log("ゲームクリア！");
-            GameManager.Instance.GameClear();
+            GameManager.Instance?.GameClear();
         }
         else
         {
             Debug.Log("ゲームオーバー！");
-            GameManager.Instance.GameOver();
+            GameManager.Instance?.GameOver();
         }
     }
 }

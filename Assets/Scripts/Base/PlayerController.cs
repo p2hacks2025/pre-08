@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    void CheckClickOnPlayer()
+    public void CheckClickOnPlayer()
     {
         if (mainCamera == null) return;
         

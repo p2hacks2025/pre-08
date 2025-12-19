@@ -45,8 +45,8 @@ public class LaserPointer : MonoBehaviour
             {
                 Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
             }
-            
-            //衝突検知
+                        
+            /*
             if (other.gameObject.CompareTag("Goal"))
             {
                 //GoalManagerに色情報を伝える
@@ -56,7 +56,10 @@ public class LaserPointer : MonoBehaviour
                     goalManager.OnLaserHit(laserColor);
                 }
             }
-            else if (other.gameObject.CompareTag("Pointer"))
+            */
+
+            //衝突検知
+            if (other.gameObject.CompareTag("Pointer"))
             {
                 //FireLaserに色情報を伝える
                 FireLaser fireLaser = other.gameObject.transform.GetComponent<FireLaser>();
@@ -65,6 +68,11 @@ public class LaserPointer : MonoBehaviour
                     fireLaser.SetColor(laserColor);
                     fireLaser.isActive = true;
                 }
+            }
+            else if (other.gameObject.CompareTag("Defenser"))
+            {
+                //ゲームオーバー処理
+                GameManager.Instance.GameOver();
             }
         }
     }

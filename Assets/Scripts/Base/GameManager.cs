@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public ChangeScene changeScene;   //ChangeSceneコンポーネント
+    private ChangeScene changeScene;
+    private string pendingScene = "";
+    private bool waitingForClick = false;
 
-    //インスタンス（シングルトン）
+    //シングルトンインスタンス
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -21,15 +23,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         //コンポーネントの取得
         changeScene = GetComponent<ChangeScene>();
     }
     
-    void Update()
+    private void Update()
     {
-        //Rキーを押すとシーンを再読み込みする(デバッグ用)
+        //左クリック待機中の場合
+        if (waitingForClick && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (pendingScene != "")
+            {
+                if (changeScene != null)
+                {
+                    changeScene.LoadScene(pendingScene);
+                }
+                pendingScene = "";
+                waitingForClick = false;
+            }
+        }
+
+        //Rキーでシーン再読み込み（デバッグ用）
         if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
         {
             if (changeScene != null)
@@ -39,28 +55,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameTitle()
+    //左クリック待ちでシーン遷移
+    public void LoadSceneWithClick(string sceneName)
     {
-        //タイトル画面へ戻る
-        if (changeScene != null)
-        {
-            changeScene.LoadScene("TitleScene");
-        }
+        pendingScene = sceneName;
+        waitingForClick = true;
     }
+
     public void GameOver()
     {
-        //ゲームオーバー画面へ遷移
-        if (changeScene != null)
-        {
-            changeScene.LoadScene("GameOverScene");
-        }
+        LoadSceneWithClick("GameOverScene");
     }
     public void GameClear()
     {
-        //ゲームクリア画面へ遷移
-        if (changeScene != null)
-        {
-            changeScene.LoadScene("GameClearScene");
-        }
+        LoadSceneWithClick("GameClearScene");
     }
 }
