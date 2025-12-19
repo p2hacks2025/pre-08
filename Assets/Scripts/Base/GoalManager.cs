@@ -12,12 +12,9 @@ public class GoalCondition
 public class GoalManager : MonoBehaviour
 {
     [SerializeField] private GoalCondition[] goalConditions;
-    private bool isCleared = false;
     
     public void OnLaserHit(LaserColorType hitColor)
     {
-        if (isCleared) return;
-        
         //該当する色の条件を探してカウント
         foreach (var condition in goalConditions)
         {
@@ -46,27 +43,15 @@ public class GoalManager : MonoBehaviour
             }
         }
         
-        if (allConditionsMet && !isCleared)
+        if (allConditionsMet)
         {
-            isCleared = true;
-            OnGoalCleared();
+            Debug.Log("ゲームクリア！");
+            GameManager.Instance.GameClear();
         }
-    }
-    
-    private void OnGoalCleared()
-    {
-        Debug.Log("ゴールクリア！");
-        //ここにクリア時の処理を追加
-        //例: シーン遷移、エフェクト、UI表示など
-    }
-    
-    //リセット用
-    public void ResetGoal()
-    {
-        isCleared = false;
-        foreach (var condition in goalConditions)
+        else
         {
-            condition.currentCount = 0;
+            Debug.Log("ゲームオーバー！");
+            GameManager.Instance.GameOver();
         }
     }
 }

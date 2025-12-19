@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private FireLaser fireLaser;       //FireLaserコンポーネント
-    [SerializeField] private LaserColorType laserColor = LaserColorType.Red;
+    [SerializeField] private LaserColorType laserColor; //発射するレーザーの色
     private Camera mainCamera;                          //メインカメラ
     
     void Start()
