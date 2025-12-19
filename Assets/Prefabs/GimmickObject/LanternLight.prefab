@@ -1162,7 +1162,7 @@ MonoBehaviour:
   - color: 7
     laser: {fileID: 3561128786017397102}
     isDetected: 0
-  - color: 3
+  - color: 0
     laser: {fileID: 7075623355400106865}
     isDetected: 0
   requiredCount: 1
