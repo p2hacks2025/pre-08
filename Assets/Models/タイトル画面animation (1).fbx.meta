@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -83,7 +83,197 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8, y: 0.7729984, z: 0.8318744}
+      rotation: {x: 0.63250977, y: 0.0067762434, z: -0.01934585, w: 0.7742811}
+      scale: {x: 0.6073182, y: 0.8645044, z: 0.8646838}
+    - name: arm.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 0.7729984, z: -0.8318744}
+      rotation: {x: -0.0193458, y: 0.77428126, z: -0.63250965, w: -0.0067761955}
+      scale: {x: 0.73710364, y: 0.864711, z: 0.86471105}
+    - name: body
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8, y: -0.15321518, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.898159, y: 0.898159, z: 0.898159}
+    - name: body.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: -0.15321518, z: 0}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 0.0000000754979}
+      scale: {x: 0.898159, y: 0.898159, z: 0.898159}
+    - name: eri
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8.005002, y: -0.15321518, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9103974, y: 0.898159, z: 0.9103974}
+    - name: eri.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8.005002, y: -0.15321518, z: -4.3726542e-10}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 0.0000000754979}
+      scale: {x: 0.9103974, y: 0.898159, z: 0.9103974}
+    - name: eye
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 7.0211606, y: 2.3864546, z: 0.35471946}
+      rotation: {x: 0, y: 0, z: 0.7071067, w: 0.7071068}
+      scale: {x: 0.1356, y: 0.1356, z: 0.1356}
+    - name: eye.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -6.988301, y: 2.2764692, z: -0.37424704}
+      rotation: {x: 0.7052199, y: 0.70522, z: -0.051621884, w: 0.051621936}
+      scale: {x: 0.096632265, y: 0.13532758, z: 0.13532758}
+    - name: face
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8.034897, y: 2.307192, z: -0.024132298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.1632543, y: 0.9889283, z: 1.1632543}
+    - name: face.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 2.2529507, z: 0}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 0.0000000754979}
+      scale: {x: 1.1609173, y: 0.9869417, z: 1.1609173}
+    - name: hair
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8.034897, y: 2.3730094, z: -0.024132298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0205334, y: 0.9188498, z: 1.0205334}
+    - name: hair.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 2.3186352, z: 0}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 0.0000000754979}
+      scale: {x: 1.0184834, y: 0.9170039, z: 1.0184834}
+    - name: hoho
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 6.9867144, y: 2.123319, z: 0.45678034}
+      rotation: {x: 0, y: 0, z: 0.7071067, w: 0.7071068}
+      scale: {x: 0.10013552, y: 0.21150066, z: 0.21150066}
+    - name: hoho.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -6.953923, y: 2.0694463, z: -0.47994646}
+      rotation: {x: 0.7071067, y: 0.7071068, z: 0.000000053385076, w: 0.000000053385076}
+      scale: {x: 0.09993437, y: 0.21107577, z: 0.21107577}
+    - name: obi
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8, y: 0.8439718, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.8788937, y: 0.20420906, z: 0.8788937}
+    - name: obi.001
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 0.8439718, z: 0}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 0.0000000754979}
+      scale: {x: 0.8788937, y: 0.20420906, z: 0.8788937}
+    - name: odango hair
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8.853545, y: 3.11918, z: -0.024132255}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.5467878, y: 0.5467878, z: 0.5467878}
+    - name: "\u25B3hair"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8.865488, y: 3.8667464, z: -0.37623584}
+      rotation: {x: 0.09774992, y: 0.7215617, z: 0.16098012, w: 0.66624254}
+      scale: {x: 1.1609174, y: 1.1609175, z: 1.1609173}
+    - name: "\u30BF\u30A4\u30C8\u30EB"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8.027491, y: 6, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 2, y: 2, z: 2}
+    - name: "\u30BF\u30A4\u30C8\u30EB.001"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 7.910836, y: 6, z: -0.19680974}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+      scale: {x: 2, y: 2, z: 2.1203187}
+    - name: "\u5F66\u661F"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: 8, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 148.49088, y: 148.49088, z: 148.49088}
+    - name: spine
+      parentName: "\u5F66\u661F"
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 9.650063e-15, z: 6.008085e-15, w: 0.7071067}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: head
+      parentName: spine
+      position: {x: -0, y: 0.01, z: 0}
+      rotation: {x: -0, y: -1.1042472e-14, z: 0.0000000039475454, w: 1}
+      scale: {x: 1.0000002, y: 0.99999964, z: 0.99999964}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.01135564, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.L
+      parentName: spine
+      position: {x: 0.0000000011920929, y: 0.010000001, z: -0.005752528}
+      rotation: {x: 0.99325585, y: 0.000000013738709, z: -8.8979504e-11, w: -0.11594342}
+      scale: {x: 1.0000002, y: 1.0000017, z: 1.0000056}
+    - name: arm.L_end
+      parentName: arm.L
+      position: {x: -0, y: 0.006487253, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.R
+      parentName: spine
+      position: {x: -0.0000000035762786, y: 0.010000003, z: 0.0056326375}
+      rotation: {x: 0.9939028, y: 0.000000013678691, z: 5.5393246e-10, w: 0.11026013}
+      scale: {x: 1.0000005, y: 1.0000008, z: 1.0000032}
+    - name: arm.R_end
+      parentName: arm.R
+      position: {x: -0, y: 0.006584089, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: "\u7E54\u59EB"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 0, z: 0}
+      rotation: {x: -0.00000009415696, y: 0.7071068, z: 0.7071067, w: 0.00000009415697}
+      scale: {x: 148.49088, y: 148.49088, z: 148.49088}
+    - name: spine
+      parentName: "\u7E54\u59EB"
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7071067, y: 0.000000046390976, z: 0.00000004639098, w: 0.7071068}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.9999997}
+    - name: head
+      parentName: spine
+      position: {x: -0, y: 0.01, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.99999964, y: 0.99999964, z: 0.99999964}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.01135564, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.L
+      parentName: spine
+      position: {x: 1.4017318e-18, y: 0.01, z: -0.005752528}
+      rotation: {x: -0.99325585, y: 4.6398445e-12, z: 3.9728224e-11, w: 0.11594348}
+      scale: {x: 1.0000033, y: 1.0000017, z: 1.0000031}
+    - name: arm.L_end
+      parentName: arm.L
+      position: {x: -0, y: 0.006487253, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.R
+      parentName: spine
+      position: {x: -0, y: 0.01, z: 0.0056326375}
+      rotation: {x: -0.9939028, y: -8.6153307e-13, z: 7.783996e-12, w: -0.1102601}
+      scale: {x: 1, y: 1.000001, z: 1.000001}
+    - name: arm.R_end
+      parentName: arm.R
+      position: {x: -0, y: 0.006584089, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: "\u7FBD\u8863"
+      parentName: "\u30BF\u30A4\u30C8\u30EB\u753B\u9762animation (1)(Clone)"
+      position: {x: -8, y: 0, z: 0}
+      rotation: {x: 0, y: 0.7071067, z: 0, w: 0.7071068}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -94,13 +284,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
