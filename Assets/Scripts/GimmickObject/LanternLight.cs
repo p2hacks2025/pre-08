@@ -25,9 +25,10 @@ public class LanternLight : ResponseLaser
         //出力レーザー色に応じてライトのマテリアルを変更
         for (int i = 0; i < conditions.Length && i < lightRenderers.Length; i++)
         {
-            if (conditions[i].laser != null && lightRenderers[i] != null)
+            if (conditions[i].laser != null　&& lightRenderers[i] != null)
             {
                 ApplyMaterial(lightRenderers[i], conditions[i].laser.laserColor == LaserColorType.White ? conditions[i].color : conditions[i].laser.laserColor);
+                conditions[i].laser.Fire();
             }
         }
     }
