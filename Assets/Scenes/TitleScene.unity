@@ -5530,7 +5530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SelectScene
   stageNumberText: {fileID: 115110135}
   minStage: 1
-  maxStage: 3
+  maxStage: 4
 --- !u!1 &180868364
 GameObject:
   m_ObjectHideFlags: 0
