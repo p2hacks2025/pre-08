@@ -15,6 +15,19 @@ public class BalloonWall : ResponseLaser
         }
     }
 
+    protected override void DetectLaser()
+    {
+        //指定色が当たっている方向のみを検知対象にする
+        foreach (var con in conditions)
+        {
+            if (con.laser == null || con.isDetected) continue;
+            if (con.laser.isActive && con.laser.laserColor == targetColor)
+            {
+                con.isDetected = true;
+            }
+        }
+    }
+
     protected override void OutputLaser()
     {
         if (conditions == null || conditions.Length != 4) return;
@@ -32,6 +45,7 @@ public class BalloonWall : ResponseLaser
 
         if (shouldBreak)
         {
+            //反対方向にレーザーを出力
             for (int i = 0; i < conditions.Length; i++)
             {
                 if (conditions[i].laser != null && conditions[i].laser.isActive)
