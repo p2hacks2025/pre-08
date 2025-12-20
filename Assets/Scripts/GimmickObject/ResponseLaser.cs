@@ -20,7 +20,7 @@ public class MaterialData
 public class ResponseLaser : DragDrop
 {
     [SerializeField] protected LaserCondition[] conditions;     //検知条件
-    [SerializeField] private int requiredCount = 0;             //必要な条件数(0で全条件)
+    [SerializeField] protected int requiredCount = 0;             //必要な条件数(0で全条件)
     [SerializeField] protected MaterialData[] materialDatas;    //マテリアルデータ
     protected bool isActivated = false;                         //起動済みフラグ
     
