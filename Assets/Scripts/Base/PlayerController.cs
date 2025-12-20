@@ -1,64 +1,107 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[System.Serializable]
+public class ColorMaterialData
+{
+    public LaserColorType colorType;    //レーザーの色タイプ
+    public Material colorMaterial;      //対応するマテリアル
+}
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private FireLaser fireLaser;       //FireLaserコンポーネント
-    [SerializeField] private LaserColorType laserColor; //発射するレーザーの色
-    private Camera mainCamera;                          //メインカメラ
+    [SerializeField] private FireLaser fireLaser;               //FireLaserコンポーネント
+    [SerializeField] private LaserColorType laserColor;         //発射するレーザーの色
+    [SerializeField] private Renderer[] auraRenderers;          //オーラのレンダラー配列
+    [SerializeField] private ColorMaterialData[] materialDatas; //色とマテリアルのデータ配列
     
+    private Camera mainCamera;  //メインカメラのキャッシュ
+
     void Start()
     {
-        //メインカメラの取得
+        //メインカメラを取得
         mainCamera = Camera.main;
+        
+        //レーザーの色を設定
+        if (fireLaser != null)
+        {
+            fireLaser.SetColor(laserColor);
+        }
+        
+        //オーラのマテリアルを適用
+        ApplyAuraMaterial();
     }
 
     void Update()
     {
-        //左クリックまたはタップを判定する
-        bool isPressed = false;
-        Vector2 inputPosition = Vector2.zero;
-        
-        //マウス入力
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        //入力位置を取得
+        Vector2? inputPosition = GetInputPosition();
+        if (inputPosition.HasValue)
         {
-            isPressed = true;
-            inputPosition = Mouse.current.position.ReadValue();
-        }
-        //タッチ入力
-        else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-        {
-            isPressed = true;
-            inputPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-        }
-        
-        if (isPressed)
-        {
-            CheckClickOnPlayer(inputPosition);
+            //プレイヤーがクリックされたかチェック
+            CheckClickOnPlayer(inputPosition.Value);
         }
     }
-    
-    public void CheckClickOnPlayer(Vector2 inputPosition)
+
+    private void ApplyAuraMaterial()
     {
-        if (mainCamera == null) return;
+        if (auraRenderers == null || materialDatas == null) return;
         
-        //入力位置からRayを飛ばす
-        Ray ray = mainCamera.ScreenPointToRay(inputPosition);
-        RaycastHit hit;
-        
-        //Raycastで当たり判定
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Collide))
+        //各オーラレンダラーに対して処理
+        foreach (var renderer in auraRenderers)
         {
-            //クリックしたオブジェクトがプレイヤーかチェック
-            if (hit.collider.gameObject == gameObject)
+            if (renderer == null) continue;
+            
+            //マテリアルデータから一致する色のマテリアルを探して適用
+            foreach (var data in materialDatas)
             {
-                if (fireLaser != null)
+                if (data.colorType == laserColor && data.colorMaterial != null)
                 {
-                    //発射
-                    fireLaser.SetColor(laserColor);
-                    fireLaser.Fire();
+                    renderer.material = data.colorMaterial;
+                    break;
                 }
             }
+        }
+    }
+    private Vector2? GetInputPosition()
+    {
+        //マウス入力をチェック
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            return Mouse.current.position.ReadValue();
+        }
+        
+        //タッチ入力をチェック
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            return Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        
+        return null;
+    }
+    private void CheckClickOnPlayer(Vector2 inputPosition)
+    {
+        if (mainCamera == null) return;
+
+        //スクリーン座標からレイを生成
+        Ray ray = mainCamera.ScreenPointToRay(inputPosition);
+        
+        //レイキャストで当たり判定
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Collide))
+        {
+            //クリックしたオブジェクトが自分自身（プレイヤー）かチェック
+            if (hit.collider.gameObject == gameObject)
+            {
+                FirePlayerLaser();
+            }
+        }
+    }
+    public void FirePlayerLaser()
+    {
+        if (fireLaser != null)
+        {
+            //レーザーの色を設定して発射
+            fireLaser.SetColor(laserColor);
+            fireLaser.Fire();
         }
     }
 }

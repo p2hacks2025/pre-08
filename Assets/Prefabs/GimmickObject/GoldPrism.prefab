@@ -74,33 +74,31 @@ MonoBehaviour:
   isCanDrag: 0
   isDragging: 0
   conditions:
-  - color: 0
+  - color: 7
     laser: {fileID: 8387145515194273252}
     isDetected: 0
-  - color: 7
+  - color: 0
     laser: {fileID: 3815097686560801429}
     isDetected: 0
-  - color: 3
+  - color: 1
     laser: {fileID: 8376391352387108942}
     isDetected: 0
   requiredCount: 1
   materialDatas:
   - colorType: 0
-    colorMaterial: {fileID: 2100000, guid: fe29d67303e8c1742a8afb5e09436f17, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 6e772c0a3a1aa5648a2ab4aaa861543d, type: 2}
   - colorType: 1
-    colorMaterial: {fileID: 2100000, guid: ffd325a65ddf83646905ca744f6c8cca, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 0855631cafe8c1b46a8ff0558667cd3b, type: 2}
   - colorType: 2
-    colorMaterial: {fileID: 2100000, guid: 56a90dceb5bc859498ccec3c6f2ffa31, type: 2}
+    colorMaterial: {fileID: 2100000, guid: f123c1e8b6bcb5a4a981fc29a532b079, type: 2}
   - colorType: 3
-    colorMaterial: {fileID: 2100000, guid: 0961a8a67cbbf1249b56a70a0878cf9a, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 3c03e45d6741b2d4282370233bcf356b, type: 2}
   - colorType: 4
-    colorMaterial: {fileID: 2100000, guid: fe7c6b834a0caa04aa12705b9d84ce3c, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 8071b4b24dd87b2488beb9cc4d796093, type: 2}
   - colorType: 5
-    colorMaterial: {fileID: 2100000, guid: 2a02629862fb4834bad8294a6b70405c, type: 2}
-  - colorType: 6
-    colorMaterial: {fileID: 2100000, guid: 93d578de6b046b24d8c1d554777ebc87, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 98693768b1b48704d8d9116eb8d4f912, type: 2}
   - colorType: 7
-    colorMaterial: {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
+    colorMaterial: {fileID: 2100000, guid: 3639595fc42f26e489b20ad102f7cb08, type: 2}
   lightRenderers:
   - {fileID: 980304035514642721}
   - {fileID: 2677784269498196908}
@@ -159,8 +157,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &8376391352387108942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +241,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffd325a65ddf83646905ca744f6c8cca, type: 2}
+  - {fileID: 2100000, guid: 0855631cafe8c1b46a8ff0558667cd3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +458,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe29d67303e8c1742a8afb5e09436f17, type: 2}
+  - {fileID: 2100000, guid: 6e772c0a3a1aa5648a2ab4aaa861543d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -581,7 +579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2bf6e086894a98439aa89a6b57b8a45, type: 2}
+  - {fileID: 2100000, guid: 3639595fc42f26e489b20ad102f7cb08, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -659,8 +657,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &8387145515194273252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +853,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6450904682416643624
 GameObject:
@@ -975,8 +973,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &3815097686560801429
 MonoBehaviour:
   m_ObjectHideFlags: 0

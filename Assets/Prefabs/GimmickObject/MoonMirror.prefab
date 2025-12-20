@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!114 &3881361916896925730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 2218445931091412715}
   serializedVersion: 2
   m_LocalRotation: {x: 0.033353075, y: -0.9203639, z: 0.08052145, w: 0.3812272}
-  m_LocalPosition: {x: -0.25, y: 0, z: -0.25}
+  m_LocalPosition: {x: -0.1, y: 0, z: -0.1}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -309,8 +309,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!114 &4698896322700318482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7843235581915502446
 GameObject:
@@ -635,8 +635,6 @@ MonoBehaviour:
     particlePrefab: {fileID: 104129425667712618, guid: 4a5856dfd88efc244a9943d69034244d, type: 3}
   - colorType: 5
     particlePrefab: {fileID: 8491916144041439168, guid: 0aa66b06e78c4f84fb98cf967e33b0e7, type: 3}
-  - colorType: 6
-    particlePrefab: {fileID: 2902417928551854862, guid: 5bedf016375d38c4798bf069b271ac15, type: 3}
 --- !u!1 &8084980843411942178
 GameObject:
   m_ObjectHideFlags: 0

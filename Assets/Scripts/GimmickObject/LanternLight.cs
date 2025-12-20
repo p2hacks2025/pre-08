@@ -23,22 +23,19 @@ public class LanternLight : ResponseLaser
         if (conditions == null || lightRenderers == null) return;
         
         //レーザーポインターの色に応じて出力する
-        foreach (var condition in conditions)
-        {
-            if (condition.laser != null)
-            {
-                LaserColorType outputColor = condition.color == LaserColorType.White ? condition.laser.laserColor : condition.color;
-                condition.laser.SetColor(outputColor);
-                condition.laser.Fire();
-            }
-        }
-
-        //マテリアル更新
         for (int i = 0; i < conditions.Length && i < lightRenderers.Length; i++)
         {
-            if (lightRenderers[i] != null)
+            var con = conditions[i];
+            var renderer = lightRenderers[i];
+            if (con.laser != null && renderer != null)
             {
-                ApplyMaterial(lightRenderers[i], conditions[i].color == LaserColorType.White ? conditions[i].laser.laserColor : conditions[i].color);
+                //白色の場合のみレーザーの現在の色を使用、それ以外は条件の色を使用
+                LaserColorType outputColor = con.color == LaserColorType.White ? con.laser.laserColor : con.color;
+                con.laser.SetColor(outputColor);
+                con.laser.Fire();
+                
+                //ライトのマテリアルを更新
+                ApplyMaterial(renderer, outputColor);
             }
         }
     }
