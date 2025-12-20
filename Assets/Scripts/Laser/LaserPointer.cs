@@ -8,12 +8,15 @@ public class LaserPointer : MonoBehaviour
     [SerializeField] private GameObject hitParticlePrefab;      //衝突時のパーティクル
     [HideInInspector] public LaserColorType laserColor = LaserColorType.Red;    //レーザーの色
     private bool hasCollided = false;                           //衝突済みフラグ
+    private Vector3 originPos;
 
     private void Start()
     {
         //コンポーネントの取得
         rb = GetComponent<Rigidbody>();
-        
+
+        //開始位置を保存
+        originPos = transform.position;
         //色に応じたマテリアルを適用する
         ApplyColor(laserColor);
         //初速度を与える
@@ -27,8 +30,8 @@ public class LaserPointer : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        //既に衝突済みなら処理しない
-        if (hasCollided) return;
+        //既に衝突済みまたは生成直後なら処理しない
+        if (hasCollided || Vector3.Distance(originPos, transform.position) < 1.0f) return;
         
         if (other.gameObject != null)
         {

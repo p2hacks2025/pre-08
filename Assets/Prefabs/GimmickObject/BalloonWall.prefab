@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 1840117781420764952}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -629,7 +629,7 @@ Transform:
   m_GameObject: {fileID: 3663598337595393379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -660,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 4213696404994533436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -691,7 +691,7 @@ Transform:
   m_GameObject: {fileID: 4726253869226356471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -911,6 +911,8 @@ MonoBehaviour:
   materialDatas:
   - colorType: 0
     colorMaterial: {fileID: 2100000, guid: 579a4eb648b48a749ad5a17f06e736eb, type: 2}
+  - colorType: 1
+    colorMaterial: {fileID: 2100000, guid: 7ffece4c41fe9b14199afed3046401a1, type: 2}
   - colorType: 2
     colorMaterial: {fileID: 2100000, guid: 1206f83ccda5bb448aeedcd0f8283fe7, type: 2}
   - colorType: 3
@@ -921,8 +923,6 @@ MonoBehaviour:
     colorMaterial: {fileID: 2100000, guid: 0d45f99f77dda00469fa0f68c85be6e9, type: 2}
   - colorType: 6
     colorMaterial: {fileID: 2100000, guid: 255512d4025f9cd4c9820dc581bcc5b3, type: 2}
-  - colorType: 7
-    colorMaterial: {fileID: 0}
   lightRenderer: {fileID: 8416592358904386562}
   breakEffect: {fileID: 8151386180526833478, guid: 35a26f5df91958542b5482dbd1f7e951, type: 3}
   targetColor: 0

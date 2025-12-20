@@ -31,29 +31,23 @@ public class BalloonWall : ResponseLaser
 
         if (shouldBreak)
         {
-            //全てのアクティブなレーザーを対向方向に再発射
             for (int i = 0; i < conditions.Length; i++)
             {
                 if (conditions[i].laser != null && conditions[i].laser.isActive)
                 {
-                    LaserPointer laserPointer = conditions[i].laser.GetLaserPointer();
-                    if (laserPointer != null)
+                    //対向方向のインデックスを計算 (0↔2, 1↔3)
+                    int oppositeIndex = (i + 2) % 4;
+                    
+                    if (conditions[oppositeIndex].laser != null)
                     {
-                        //対向方向のインデックスを計算
-                        int oppositeIndex = (i + 2) % 4;
+                        //入力レーザーの色を対向方向に適用
+                        conditions[oppositeIndex].laser.SetColor(conditions[i].laser.laserColor);
                         
-                        if (conditions[oppositeIndex].laser != null)
-                        {
-                            //対向方向に位置と向きを設定
-                            laserPointer.transform.position = conditions[oppositeIndex].laser.transform.position;
-                            laserPointer.transform.rotation = conditions[oppositeIndex].laser.transform.rotation;
-                            
-                            //再発射
-                            laserPointer.Fire();
-                            
-                            //対向側のFireLaserをアクティブに
-                            conditions[oppositeIndex].laser.isActive = true;
-                        }
+                        //反対方向のレーザーから出力
+                        conditions[oppositeIndex].laser.Fire();
+                        
+                        //対向側のFireLaserをアクティブに
+                        conditions[oppositeIndex].laser.isActive = true;
                     }
                 }
             }
