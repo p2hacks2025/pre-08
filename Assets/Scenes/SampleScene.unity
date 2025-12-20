@@ -7695,8 +7695,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4483312434496781867, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
+      propertyPath: conditions.Array.data[0].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483312434496781867, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
       propertyPath: conditions.Array.data[1].color
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8795037614783098521, guid: 37a4e0459faf84567aa61bb91cb72120, type: 3}
       propertyPath: m_Name

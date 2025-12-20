@@ -20,7 +20,7 @@ public class GoldPrism : ResponseLaser
 
     protected override void OutputLaser()
     {
-        if (conditions == null) return;
+        if (conditions == null || lightRenderers == null) return;
 
         //アクティブな入力を探す
         int inputIndex = -1;
@@ -50,14 +50,11 @@ public class GoldPrism : ResponseLaser
         }
 
         //マテリアル更新
-        if (lightRenderers != null)
+        for (int i = 0; i < conditions.Length && i < lightRenderers.Length; i++)
         {
-            for (int i = 0; i < conditions.Length && i < lightRenderers.Length; i++)
+            if (lightRenderers[i] != null)
             {
-                if (lightRenderers[i] != null)
-                {
-                    ApplyMaterial(lightRenderers[i], conditions[i].color == LaserColorType.White ? inputColor : conditions[i].color);
-                }
+                ApplyMaterial(lightRenderers[i], conditions[i].color == LaserColorType.White ? inputColor : conditions[i].color);
             }
         }
     }
