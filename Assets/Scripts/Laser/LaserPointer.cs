@@ -14,10 +14,10 @@ public class LaserPointer : MonoBehaviour
         //コンポーネントの取得
         rb = GetComponent<Rigidbody>();
         
-        //初速度を与える
-        rb.linearVelocity = transform.forward * speed;
         //色に応じたマテリアルを適用する
         ApplyColor(laserColor);
+        //初速度を与える
+        Fire();
     }
     
     private void ApplyColor(LaserColorType color)
@@ -34,11 +34,8 @@ public class LaserPointer : MonoBehaviour
         {
             Debug.Log($"{gameObject.name}: {other.gameObject.name} に衝突");
 
-            //衝突フラグを立てる
-            hasCollided = true;
-
             //レーザーを停止する
-            rb.linearVelocity = Vector3.zero;
+            Stop();
 
             //衝突位置にパーティクルを生成
             if (hitParticlePrefab != null)
@@ -75,5 +72,22 @@ public class LaserPointer : MonoBehaviour
                 GameManager.Instance.GameOver();
             }*/
         }
+    }
+
+    public void Fire()
+    {
+        //発射する
+        hasCollided = false;
+        if (rb != null) rb.linearVelocity = transform.forward * speed;
+    }
+    public void Stop()
+    {
+        //停止する
+        hasCollided = true;
+        if (rb != null) rb.linearVelocity = Vector3.zero;
+    }
+    public LaserPointer GetLaserPointer()
+    {
+        return this;
     }
 }

@@ -18,54 +18,54 @@ public class BalloonWall : ResponseLaser
     {
         if (conditions == null || conditions.Length != 4) return;
 
-        //条件を満たしたレーザーの色をチェック
+        //指定色のレーザーが当たっているか確認
         bool shouldBreak = false;
-        
-        for (int i = 0; i < conditions.Length; i++)
+        foreach (var condition in conditions)
         {
-            var con = conditions[i];
-            if (con.isDetected && con.laser != null)
+            if (condition.laser != null && condition.laser.isActive && condition.laser.laserColor == targetColor)
             {
-                //ターゲットカラーと一致、またはWhiteの場合は壊れる
-                if (con.laser.laserColor == targetColor || targetColor == LaserColorType.White)
-                {
-                    shouldBreak = true;
-                    break;
-                }
+                shouldBreak = true;
+                break;
             }
         }
 
         if (shouldBreak)
         {
-            BreakWall();
-        }
-    }
-
-    private void BreakWall()
-    {
-        //全てのアクティブなレーザーを対向方向から出力
-        for (int i = 0; i < conditions.Length; i++)
-        {
-            var con = conditions[i];
-            if (con.laser != null && con.laser.isActive)
+            //全てのアクティブなレーザーを対向方向に再発射
+            for (int i = 0; i < conditions.Length; i++)
             {
-                int oppositeIndex = (i + 2) % 4;
-                
-                if (conditions[oppositeIndex].laser != null)
+                if (conditions[i].laser != null && conditions[i].laser.isActive)
                 {
-                    conditions[oppositeIndex].laser.SetColor(con.laser.laserColor);
-                    conditions[oppositeIndex].laser.Fire();
+                    LaserPointer laserPointer = conditions[i].laser.GetLaserPointer();
+                    if (laserPointer != null)
+                    {
+                        //対向方向のインデックスを計算
+                        int oppositeIndex = (i + 2) % 4;
+                        
+                        if (conditions[oppositeIndex].laser != null)
+                        {
+                            //対向方向に位置と向きを設定
+                            laserPointer.transform.position = conditions[oppositeIndex].laser.transform.position;
+                            laserPointer.transform.rotation = conditions[oppositeIndex].laser.transform.rotation;
+                            
+                            //再発射
+                            laserPointer.Fire();
+                            
+                            //対向側のFireLaserをアクティブに
+                            conditions[oppositeIndex].laser.isActive = true;
+                        }
+                    }
                 }
             }
-        }
 
-        //破壊エフェクトを生成
-        if (breakEffect != null)
-        {
-            Instantiate(breakEffect, transform.position, Quaternion.identity);
-        }
+            //破壊エフェクトを生成
+            if (breakEffect != null)
+            {
+                Instantiate(breakEffect, transform.position, transform.rotation);
+            }
 
-        //オブジェクトを破壊
-        Destroy(gameObject);
+            //壁を壊す処理
+            Destroy(gameObject);
+        }
     }
 }
