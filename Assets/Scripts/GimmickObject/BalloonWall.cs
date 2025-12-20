@@ -10,6 +10,7 @@ public class BalloonWall : ResponseLaser
     {
         if (lightRenderer != null)
         {
+            //初期色のマテリアルを設定
             ApplyMaterial(lightRenderer, targetColor);
         }
     }
@@ -35,30 +36,27 @@ public class BalloonWall : ResponseLaser
             {
                 if (conditions[i].laser != null && conditions[i].laser.isActive)
                 {
-                    //対向方向のインデックスを計算 (0↔2, 1↔3)
+                    //反対方向のレーザーを取得
                     int oppositeIndex = (i + 2) % 4;
+                    var outputLaser = conditions[oppositeIndex].laser;
                     
-                    if (conditions[oppositeIndex].laser != null)
+                    if (outputLaser != null)
                     {
-                        //入力レーザーの色を対向方向に適用
-                        conditions[oppositeIndex].laser.SetColor(conditions[i].laser.laserColor);
-                        
-                        //反対方向のレーザーから出力
-                        conditions[oppositeIndex].laser.Fire();
-                        
-                        //対向側のFireLaserをアクティブに
-                        conditions[oppositeIndex].laser.isActive = true;
+                        //入力と反対方向にあるレーザーを入力色で出力
+                        outputLaser.SetColor(conditions[i].laser.laserColor);
+                        outputLaser.Fire();
+                        outputLaser.isActive = true;
                     }
                 }
             }
 
-            //破壊エフェクトを生成
+            //エフェクトの生成
             if (breakEffect != null)
             {
                 Instantiate(breakEffect, transform.position, transform.rotation);
             }
 
-            //壁を壊す処理
+            //削除処理
             Destroy(gameObject);
         }
     }

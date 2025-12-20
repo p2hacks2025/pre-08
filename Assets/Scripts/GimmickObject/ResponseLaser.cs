@@ -19,10 +19,10 @@ public class MaterialData
 
 public class ResponseLaser : DragDrop
 {
-    [SerializeField] protected LaserCondition[] conditions; //検知条件
-    [SerializeField] private int requiredCount = 0;         //必要な条件数(0で全条件)
-    [SerializeField] protected MaterialData[] materialDatas; //マテリアルデータ
-    protected bool isActivated = false;                     //起動済みフラグ
+    [SerializeField] protected LaserCondition[] conditions;     //検知条件
+    [SerializeField] private int requiredCount = 0;             //必要な条件数(0で全条件)
+    [SerializeField] protected MaterialData[] materialDatas;    //マテリアルデータ
+    protected bool isActivated = false;                         //起動済みフラグ
     
     protected void Update()
     {
@@ -66,6 +66,7 @@ public class ResponseLaser : DragDrop
     
     protected bool CheckConditions(int target)
     {
+        //満たされた条件数をカウント
         int detectedCount = 0;
         foreach (var condition in conditions)
         {
@@ -82,9 +83,9 @@ public class ResponseLaser : DragDrop
         }
     }
     
-    //マテリアル適用（共通処理）
     protected void ApplyMaterial(Renderer renderer, LaserColorType colorType)
     {
+        //マテリアル適用（共通処理）
         if (materialDatas == null || renderer == null) return;
         
         foreach (var data in materialDatas)

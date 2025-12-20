@@ -39,10 +39,12 @@ public class SnapSlot : MonoBehaviour
     }
     public void Snap(GameObject obj)
     {
+        //スロットをオブジェクトで占有
         snapObject = obj;
     }
     public void Release(GameObject obj)
     {
+        //スロットの占有を解除
         if (snapObject == obj)
         {
             snapObject = null;
@@ -50,28 +52,27 @@ public class SnapSlot : MonoBehaviour
     }
     public bool CheckOccupiedBy(GameObject obj)
     {
+        //指定オブジェクトがスロットを占有しているかチェック
         return snapObject == obj;
     }
     
-    //ドラッグ開始時：スロットを一時解放しつつ、ドラッグ中として記録
     public void StartDragging(GameObject obj)
     {
+        //ドラッグ開始
         if (snapObject == obj)
         {
             draggingObject = obj;
             snapObject = null;
         }
     }
-    
-    //ドラッグ成功時：完全に解放
     public void FinishDragging()
     {
+        //ドラッグ終了
         draggingObject = null;
     }
-    
-    //ドラッグ失敗時：元のオブジェクトで再占有
     public void CancelDragging()
     {
+        //ドラッグをキャンセルして元に戻す
         if (draggingObject != null)
         {
             snapObject = draggingObject;

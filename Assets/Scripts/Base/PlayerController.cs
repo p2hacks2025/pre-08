@@ -9,12 +9,12 @@ public class ColorMaterialData
 }
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private FireLaser fireLaser;               //FireLaserコンポーネント
+    [SerializeField] private FireLaser fireLaser;
     [SerializeField] private LaserColorType laserColor;         //発射するレーザーの色
-    [SerializeField] private Renderer[] auraRenderers;          //オーラのレンダラー配列
-    [SerializeField] private ColorMaterialData[] materialDatas; //色とマテリアルのデータ配列
+    [SerializeField] private Renderer[] auraRenderers;          //オーラのRenderer配列
+    [SerializeField] private ColorMaterialData[] materialDatas; //色とマテリアルを対応させるデータ配列
     
-    private Camera mainCamera;  //メインカメラのキャッシュ
+    private Camera mainCamera;
 
     void Start()
     {
@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
     {
         if (auraRenderers == null || materialDatas == null) return;
         
-        //各オーラレンダラーに対して処理
+        //全てのRendererに対して処理
         foreach (var renderer in auraRenderers)
         {
             if (renderer == null) continue;
             
-            //マテリアルデータから一致する色のマテリアルを探して適用
+            //マテリアルデータから一致するマテリアルを探して適用
             foreach (var data in materialDatas)
             {
                 if (data.colorType == laserColor && data.colorMaterial != null)
@@ -82,13 +82,11 @@ public class PlayerController : MonoBehaviour
     {
         if (mainCamera == null) return;
 
-        //スクリーン座標からレイを生成
+        //レイキャストでクリック位置を確認
         Ray ray = mainCamera.ScreenPointToRay(inputPosition);
-        
-        //レイキャストで当たり判定
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Physics.AllLayers, QueryTriggerInteraction.Collide))
         {
-            //クリックしたオブジェクトが自分自身（プレイヤー）かチェック
+            //クリックしたオブジェクトが彦星かチェック
             if (hit.collider.gameObject == gameObject)
             {
                 FirePlayerLaser();

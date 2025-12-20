@@ -12,7 +12,7 @@ public class DirectionChanger : ResponseLaser
         {
             if (conditions[i].laser != null && conditions[i].laser.isActive)
             {
-                //反対側のレーザーを取得
+                //反対方向のレーザーを取得
                 int oppositeIndex = (i + 1) % conditions.Length;
                 var outputLaser = conditions[oppositeIndex].laser;
                 

@@ -10,7 +10,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Vector3 originalPosition;   //初期座標
     private SnapSlot currentSlot;       //スロット情報
     private SnapSlot originalSlot;      //ドラッグ開始時のスロット
-    private float snapDistance = 2f;  //スナップ範囲
+    private float snapDistance = 2f;    //スナップ範囲
     [SerializeField] private bool isCanDrag = true;     //ドラッグ可能フラグ
     [HideInInspector] public bool isDragging = false;   //ドラッグ中フラグ
     

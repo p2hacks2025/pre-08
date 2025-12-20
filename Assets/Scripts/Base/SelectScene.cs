@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class SelectScene : MonoBehaviour
 {
-    [SerializeField] private Text stageNumberText;      //ステージナンバー表示用テキスト    
-    [SerializeField] private int minStage = 1;          //ステージの最小値
-    [SerializeField] private int maxStage = 10;         //ステージの最大値
-    private ChangeScene changeScene;                     //シーン遷移用スクリプト参照
-    private int currentStage = 1;                       //現在選択されているステージ
+    [SerializeField] private Text stageNumberText;  //ステージナンバー表示用テキスト    
+    [SerializeField] private int minStage = 1;      //ステージの最小値
+    [SerializeField] private int maxStage = 10;     //ステージの最大値
+    private ChangeScene changeScene;                //シーン遷移用スクリプト参照
+    private int currentStage = 1;                   //現在選択されているステージ
     
     void Start()
     {   
@@ -19,6 +19,7 @@ public class SelectScene : MonoBehaviour
 
     public void PrevStage()
     {
+        //前のステージを選択
         if (currentStage > minStage)
         {
             currentStage--;
@@ -27,6 +28,7 @@ public class SelectScene : MonoBehaviour
     }
     public void NextStage()
     {
+        //次のステージを選択
         if (currentStage < maxStage)
         {
             currentStage++;
@@ -40,6 +42,7 @@ public class SelectScene : MonoBehaviour
     }
     private void UpdateStageDisplay()
     {
+        //テキストにステージナンバーを表示
         if (stageNumberText != null)
         {
             stageNumberText.text = "Stage " + currentStage.ToString();
@@ -50,14 +53,14 @@ public class SelectScene : MonoBehaviour
     }
     private void UpdateButtonStates()
     {
-        //Prevボタンの有効/無効設定
+        //PrevBtnの有効/無効設定
         Button prevButton = GameObject.Find("PrevBtn").GetComponent<Button>();
         if (prevButton != null)
         {
             prevButton.interactable = currentStage > minStage;
         }
 
-        //Nextボタンの有効/無効設定
+        //NextBtnの有効/無効設定
         Button nextButton = GameObject.Find("NextBtn").GetComponent<Button>();
         if (nextButton != null)
         {

@@ -23,11 +23,6 @@ public class LaserPointer : MonoBehaviour
         Fire();
     }
     
-    private void ApplyColor(LaserColorType color)
-    {
-        laserRenderer.material = LaserColor.Instance.GetMaterial(color);
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         //既に衝突済みまたは生成直後なら処理しない
@@ -45,19 +40,6 @@ public class LaserPointer : MonoBehaviour
             {
                 Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
             }
-                        
-            /*
-            if (other.gameObject.CompareTag("Goal"))
-            {
-                //GoalManagerに色情報を伝える
-                GoalManager goalManager = other.gameObject.GetComponent<GoalManager>();
-                if (goalManager != null)
-                {
-                    goalManager.OnLaserHit(laserColor);
-                }
-            }
-            */
-
             //衝突検知
             if (other.gameObject.CompareTag("Pointer"))
             {
@@ -68,15 +50,14 @@ public class LaserPointer : MonoBehaviour
                     fireLaser.SetColor(laserColor);
                     fireLaser.isActive = true;
                 }
-            }/*
-            else if (other.gameObject.CompareTag("Defenser"))
-            {
-                //ゲームオーバー処理
-                GameManager.Instance.GameOver();
-            }*/
+            }
         }
     }
 
+    private void ApplyColor(LaserColorType color)
+    {
+        laserRenderer.material = LaserColor.Instance.GetMaterial(color);
+    }
     public void Fire()
     {
         //発射する
@@ -88,9 +69,5 @@ public class LaserPointer : MonoBehaviour
         //停止する
         hasCollided = true;
         if (rb != null) rb.linearVelocity = Vector3.zero;
-    }
-    public LaserPointer GetLaserPointer()
-    {
-        return this;
     }
 }
