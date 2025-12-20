@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dad030fb4a3a4c388b3cc0c286aa737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  delay: 2
+  delay: 0.25
 --- !u!114 &4410510231498378609
 MonoBehaviour:
   m_ObjectHideFlags: 0
